@@ -1,0 +1,43 @@
+﻿@model BookChapter
+
+@{
+    ViewData["Title"] = "صفحات چپتر";
+}
+
+<p>
+    <a asp-action="AddImage" asp-route-id="@Model.Id">افزودن</a>
+</p>
+<p>
+    <a asp-action="AddImagesByZip" asp-route-id="@Model.Id">آپلود فایل زیپ</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                عکس
+            </th>
+            <th>
+                ترتیب عکس
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Images.OrderBy(i => i.ImageNumber)) {
+        <tr>
+            <td class="w-25">
+                <img class="w-100" src="https://dl.aosasori.com/ChapterParts/@(item.ImageName)">
+            </td>
+            <td>
+                @item.ImageNumber
+            </td>
+            <td>
+                <form method="post" asp-action="DeleteImage">
+                    <input type="hidden" value="@item.ImageId" name="id" />
+                    <input type="submit" value="حذف" />
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

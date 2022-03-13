@@ -1,0 +1,24 @@
+﻿@model SearchViewModel
+
+<div class="col-10 center p-5">
+    <p>جستجو</p>
+    <form method="get" asp-route-id="@Model.TypeId" asp-action="@Model.ActionName"
+               asp-controller="@Model.ControllerName" asp-area="@Model.AreaName">
+        <div class="form-group">
+            <input class="form-control" asp-for="Text"/>
+        </div>
+        <div class="form-group">
+            <input type="number" asp-for="PageId" />
+
+            @if (Model.Types != null)
+            {
+                var items = new SelectList(Model.Types, "Id", "TypeName");
+
+                <select asp-for="TypeId" asp-items="items">
+                </select>
+
+            }
+        </div>
+        <input type="submit" value="جستجو" class="btn btn-outline-success" asp-route-id="@Model.TypeId"  />
+    </form>
+</div>

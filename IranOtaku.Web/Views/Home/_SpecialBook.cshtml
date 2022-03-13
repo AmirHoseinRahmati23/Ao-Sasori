@@ -1,0 +1,20 @@
+﻿@model Book
+
+<section class="specialCon">
+    <article class="specialCard">
+        <div class="specialImgBox">
+            <a href="#">
+                <img src="https://dl.aosasori.com/BookImages/@(Model.Image)" alt="@Model.Name">
+            </a>
+        </div>
+        <div class="specialContent">
+            <h1><a asp-controller="Home" asp-action="Detail" asp-route-id="@Model.Id">@Model.Name</a></h1>
+            <p>
+                @Model.ShortStory
+            </p>
+            <a class="specialDl" 
+               asp-controller="Home" asp-action="Detail" asp-route-id="@Model.Id"
+               >ادامه ...</a>
+        </div>
+    </article>
+</section>

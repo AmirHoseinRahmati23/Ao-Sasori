@@ -1,0 +1,32 @@
+﻿@model bool
+@{
+    ViewData["Title"] = "نتیجه پرداخت";
+}
+
+
+
+<section class="loginContainer">
+    <div class="loginTitle">
+        <h6>نتیجه پرداخت</h6>
+    </div>
+    <div class="loginForm" @( (Model) ? "" : "style= \"background-color : red\" " )>
+        @if (Model)
+        {
+            <h3>پرداخت با موفقیت انجام شد</h3>
+        }
+        else
+        {
+            <h3>پرداخت با شکست مواجه شد</h3>
+        }
+        <div class="loginCC">
+            <a asp-action="Index" asp-controller="UserPanel">بازگشت به پنل کاربری</a>
+        </div>
+    </div>
+</section>
+
+
+
+@section Style{
+    <link rel="stylesheet" type="text/css" href="~/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}

@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "ورود و ثبت نام";
+}
+@model SignUpAndSignInViewModel
+@if (ViewBag.Message != null)
+{
+    <div class="loginContainer" asp-validation-summary="All" style="max-height : 70px">
+            <p>
+                @ViewBag.Message
+            </p>
+    </div>
+}
+
+<section class="loginContainer">
+
+
+    <!-- login start -->
+    <div class="loginTitle">
+        <h6>ورود</h6>
+    </div>
+    <div class="loginForm">
+        <form asp-action="Login" method="post">
+            <div class="InputBox">
+                <input asp-for="UserNameOrEmail" type="text" placeholder="نام کاربری یا ایمیل">
+            </div>
+            <div class="InputBox">
+                <input asp-for="LoginPassword" type="password" placeholder="رمز عبور" class="password">
+                <span class="eyeBtn">
+                    <i class="iiconpass fa fa-eye"></i>
+                </span>
+            </div>
+            <div class="options">
+                <label class="remember-me">
+                    <span class="checkbox">
+                        <input type="checkbox" asp-for="RememberMe">
+                        <span class="checked mbbspar">
+                            منو به خاطر بسپار
+                        </span>
+                    </span>
+                    <a asp-action="ForgotPassword" asp-controller="Account">فراموشی رمز عبور</a>
+                </label>
+            </div>
+            <div class="loginCC">
+                <input type="submit" value="ورود" class="btnLogin">
+                <input type="button" value="ثبت نام" id="btnSignUp" class="signupBtn">
+            </div>
+            <div class="googlelogin">
+                <button 
+                        asp-action="ExternalLogin" 
+                        name="provider" 
+                        value="@Model.ExternalLogin.Name" 
+                        type="submit" 
+                        title="ورود با حساب گوگل"
+                        >ورود با حساب گوگل</button>
+            </div>
+        </form>
+    </div>
+    <!-- login end -->
+    <!-- signup start -->
+    <div class="signup" id="signUp">
+        <div class="signupContainer">
+            <div class="loginTitle">
+                <h6>ثبت نام</h6>
+            </div>
+            <div class="loginForm">
+                <form asp-action="SignUp" method="post" asp-route-returnUrl="@ViewData["returnURL"]">
+
+                    <div class="InputBox">
+                        <input asp-for="Email" type="text" placeholder="ایمیل">
+                    </div>
+                    <div class="InputBox">
+                        <input asp-for="UserName" type="text" placeholder="نام کاربری">
+                    </div>
+                    <div class="InputBox">
+                        <input asp-for="RegisterPassword" type="password" placeholder="رمز عبور" class="password">
+                        <span class="eyeBtn">
+                            <i class="iiconpass fa fa-eye"></i>
+                        </span>
+                    </div>
+                    <div class="InputBox">
+                        <input asp-for="ConfirmPassword" type="password" placeholder="تکرار رمز عبور" class="password">
+                        <span class="eyeBtn">
+                            <i class="iiconpass fa fa-eye"></i>
+                        </span>
+                    </div>
+                    <div class="loginCC">
+                        <input type="submit" value="ثبت نام" class="btnLogin">
+                        <input type="button" value="ورود" id="btnlogin" class="signupBtn">
+                    </div>
+                    <div class="googlelogin">
+                        <input type="button" value="ورود با حساب گوگل">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- signup end -->
+</section>
+
+
+@section Style{
+    <link rel="stylesheet" type="text/css" href="~/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            height: auto;
+        }
+    </style>
+}

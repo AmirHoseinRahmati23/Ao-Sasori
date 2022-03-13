@@ -1,0 +1,53 @@
+﻿@model IEnumerable<IranOtaku.Data.Entities.HomeItem>
+
+@{
+    ViewData["Title"] = "آتیم های صفحه اصلی";
+}
+
+
+@if ( Model.Count() < 3 )
+{
+    <p>
+        <a asp-action="Add">افزودن</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr class="row">
+            <th class="row col-3">
+                عکس
+            </th>
+            <th>
+                نام
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr class="row">
+            <td class="row col-3">
+                @if (item.Book.ImageIsUploaded)
+                {
+                    <img class="col-12" src="https://dl.aosasori.com/BookImages/@(item.Book.Image)" alt=" کتاب @item.Book.Name" />
+                }
+                else
+                {
+                    <img class="col-3" src="~/DefaultImages/Default.png" alt=" کتاب @item.Book.Name" />
+                }
+            </td>
+            <td>
+                @item.Book.Name
+            </td>
+            <td>
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" value="@item.Id" name="id"/>
+                    <input type="submit" value="حذف" class="btn btn-danger" />
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

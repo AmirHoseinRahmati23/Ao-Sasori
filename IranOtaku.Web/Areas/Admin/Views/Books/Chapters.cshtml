@@ -1,0 +1,47 @@
+﻿@model BookSeason
+
+@{
+    ViewData["Title"] = "چپتر ها";
+}
+
+<p>
+    <a asp-action="AddChapter" asp-route-id="@Model.Id">افزودن</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                شماره چپتر
+            </th>
+            <th>
+                قیمت(به تومان)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Chapters)
+{
+        <tr>
+            <td>
+                @item.ChapterNumber
+            </td>
+            <td>
+                @item.Price
+            </td>
+            <td>
+                <a asp-action="ChapterImages" asp-route-id="@item.Id">جزئیات</a> |
+                <form method="post" asp-action="DeleteChapter">
+                    <input name="id" type="hidden" value="@item.Id" />
+                    <input type="submit" value="حذف" class="btn-danger"/>
+                </form>
+                |
+                <form method="post" asp-action="FreeChapter">
+                    <input name="id" type="hidden" value="@item.Id" />
+                    <input type="submit" value="رایگان کردن" class="btn-warning" />
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

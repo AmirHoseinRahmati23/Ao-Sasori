@@ -1,0 +1,98 @@
+﻿@model EditViewModel
+
+@{
+    ViewData["Title"] = "ویرایش";
+}
+
+<hr />
+<div class="row">
+    @if (ViewBag.Error != null)
+    {
+        <div class="col-12 alert alert-danger">
+            <p class="text-white"> @ViewBag.Error </p>
+        </div>
+    }
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OtherNames" class="control-label"></label>
+                <textarea asp-for="OtherNames" class="form-control" ></textarea>
+                <span asp-validation-for="OtherNames" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortStory" class="control-label"></label>
+                <textarea asp-for="ShortStory" class="form-control" ></textarea>
+                <span asp-validation-for="ShortStory" class="text-danger"></span>
+            </div>
+
+            <input asp-for="Image" type="hidden" />
+
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RealeseDate" class="control-label"></label>
+                <input asp-for="RealeseDate" class="form-control" />
+                <span asp-validation-for="RealeseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChapterSize" class="control-label"></label>
+                <input asp-for="ChapterSize" class="form-control" />
+                <span asp-validation-for="ChapterSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TranslatorTeam" class="control-label"></label>
+                <input asp-for="TranslatorTeam" class="form-control" />
+                <span asp-validation-for="TranslatorTeam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Translator" class="control-label"></label>
+                <input asp-for="Translator" class="form-control" />
+                <span asp-validation-for="Translator" class="text-danger"></span>
+            </div>
+            @{
+                var items = new SelectList(Model.AvaibleTypes, "Id", "TypeName");
+            }
+            <div class="form-group">
+                <select asp-for="TypeId" class="form-control" asp-items="@items"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">بازگشت</a>
+</div>
+

@@ -1,0 +1,401 @@
+.aHeader {
+    width: 1000px;
+    margin-top: 20px;
+    display: grid;
+    grid-template-rows: auto 50px auto; /* 50px */
+    grid-row-gap: 10px;
+    justify-content: center;
+}
+.aHeader .aHeadertop {
+    display: grid;
+    grid-template-columns: 300px auto;
+    grid-column-gap: 10px;
+}
+.aHeader .aHeadertop .leftTopHeader .imgBox {
+    width: 290px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 4px 20px #070509;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.aHeader .aHeadertop .leftTopHeader .imgBox img {
+    width: 300px;
+    height: 470px;
+    border-radius: 10px;
+}
+/* ---------------------------------------------------------------- */
+.aHeader .aHeadertop .rightTopHeader {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px #070509;
+}
+/* ---------------------------------------------- */
+.aHeader .aHeadertop .rightTopHeader .rightTopHeaderContainer {
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.aHeader .aHeadertop .rightTopHeader .rightTopHeaderContainer .topTitleHeader {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    /* background-color:rgb(9, 8, 19); */
+    /* border-bottom: 1px solid rgb(0, 255, 234); */
+}
+.aHeader .aHeadertop .rightTopHeader .rightTopHeaderContainer .topTitleHeader h1 {
+    font-size: 14px;
+    font-weight: normal;
+    color: #fff;
+    font-family: 'Yekan' sans-serif;
+}
+/* .favourite{
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 40px;
+    height: 60px;
+}
+.favourite img{
+    width: 40px;
+    height: 40px;
+}
+.favourite img:hover{
+    height: 40px;
+} */
+.aHeader .aHeadertop .rightTopHeader .rightTopHeaderContainer .topTitleHeader .iconTitle {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.aHeader .aHeadertop .rightTopHeader .rightTopHeaderContainer .topTitleHeader .iconTitle img {
+    width: 25px;
+    height: 25px;
+}
+/* --------------------------------------- */
+.aHeader .aHeadertop .rightTopHeader .topOurHeader {
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    grid-column-gap: 5px;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+/* ---------------------------------------- */
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer {
+    padding-right: 5px;
+    padding: 5px 0;
+    border-radius: 5px;
+    margin: 3px 0;
+}
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.040);
+}
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.010);
+}
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer .titleName {
+   display: flex;
+   align-items: center;
+   width: 100px;
+   border-radius: 5px;
+}
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer .titleName h5 {
+    font-family: 'Yekan';
+    font-size: 14px;
+    font-weight: normal;
+    color: #fff;
+}
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer .contantName ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+}
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer .contantName ul li {
+    margin: 5px 0px;
+    padding: 0 5px;
+    color: #ccc;
+    font-size: 12px;
+    font-family: 'Yekan' sans-serif;
+    border-radius: 5px;
+}
+/* .aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer .contantName .janrea {
+    border: 1px solid #999;
+    border-radius: 5px;
+} */
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer .icon {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+}
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer .icon img {
+    width: 17px;
+    height: 17px;
+}
+/* .aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer .border {
+    border: 1px solid #fff;
+    padding: 0px 5px;
+    border-radius: 5px;
+    font-size: 10px !important;
+}
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer .blike {
+    margin-top: 20px;
+    width: 190px;
+    border-top: 2px solid #fff;
+    margin-right: 15px;
+}
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer .h5N {
+    color: #fff;
+}
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer .h5C {
+    color: #ddd;
+    font-size: 13px;
+}
+
+.aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft .ulCon .licontainer .icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+} */
+/* -------------------------------------------------------- */
+
+.occRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.occRight .topEPContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.occRight .topEPContainer h5 {
+    width: 100%;
+    font-family: 'Yekan' sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0px 0.3px #999;
+    color: #fff;
+    padding: 5px 0px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.occRight .amryazBox {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.occRight .amryazBox .con {
+    display: flex;
+}
+.occRight .amryazBox .con .amryazBoxImg {
+    width: 25px;
+    height: 25px;
+}
+.occRight .amryazBox .con .amryazBoxImg img {
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+}
+.occRight .amryazBox .con .amryazBoxContent {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+
+
+/* ------------------------------ */
+.dateAndL {
+    background-color:rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px #070509;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    align-items: center;
+    direction: ltr;
+
+}
+.dateAndL .likeBox {
+    display: flex;
+    align-items: center;
+}
+.dateAndL .likeBox button {
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 70%;
+}
+.dateAndL .likeBox button:hover {
+    opacity: 100%;
+}
+
+.dateAndL .likeBox span {
+    font-size: 16px;
+    margin-left: 10px;
+    text-align: center;
+    color: #ccc;
+}
+.dateAndL .bazdid {
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.dateAndL .bazdid img {
+    width: 20px;
+    height: 20px;
+    background: none;
+    border: none;
+    opacity: 70%;
+}
+.dateAndL .bazdid span {
+    font-size: 14px;
+    margin-right: 10px;
+    text-align: center;
+    color: #ccc;
+}
+
+.dateAndL .adteTimeBox {
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.dateAndL .adteTimeBox img {
+    width: 20px;
+    height: 20px;
+    background: none;
+    border: none;
+    opacity: 70%;
+}
+.dateAndL .adteTimeBox span {
+    font-size: 14px;
+    margin-right: 10px;
+    text-align: center;
+    color: #ccc;
+}
+
+/* ----------------------------------- */
+.aHeaderbotton {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px #070509;
+}
+.titlep {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+}
+.titlep img {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+}
+.titlep span {
+    font-size: 20px;
+}
+.pContainer {
+    width: 100%;
+    padding: 10px 15px;
+}
+.pContainer p {
+    font-size: 14px;
+    line-height: 25px;
+    color: #f0f0f0;
+}
+
+
+
+
+@media only screen and (max-width: 1024px) {
+    .aHeader {
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .aHeader .aHeadertop {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media only screen and (max-width: 568px) {
+    .aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .aHeader .aHeadertop .rightTopHeader .topOurHeader .oneConContant .occLeft {
+        order: 1;
+    }
+
+}

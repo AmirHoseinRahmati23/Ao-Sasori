@@ -1,0 +1,39 @@
+﻿@model IEnumerable<IranOtaku.Data.Entities.HomePageSlider>
+
+@{
+    ViewData["Title"] = "اسلایدر ها";
+}
+
+@if (Model.Count() < 4)
+{
+    <p>
+        <a asp-action="Add">افزودن</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SliderName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SliderName)
+                </td>
+                <td>
+                    <a asp-action="Items" asp-route-id="@item.Id">آیتم ها</a> |
+                    <form method="post" asp-action="Delete" asp-route-id="@item.Id">
+                        <input class="btn btn-danger" type="submit" value="حذف" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

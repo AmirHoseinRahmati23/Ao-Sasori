@@ -1,0 +1,147 @@
+﻿@model UserPanelViewModel
+@{
+    ViewData["Title"] = "پنل کاربری";
+}
+
+<header class="pHeader">
+    <div class="profile">
+        <div class="con">
+            <div class="profile-image">
+                @if (!string.IsNullOrEmpty(Model.User.Image))
+                {
+                    <img src="https://dl.aosasori.com/UserImages/@(Model.User.Image)" alt="عکس پروفایل">
+                }
+                else
+                {
+                    <img src="~/DefaultImages/profile.png" alt="عکس پروفایل">
+                }
+                <div class="contl">
+                    <label for="profileid">+</label>
+                    <input type="file" name="imageFile" id="profileid" form="formeSubmit">
+                </div>
+            </div>
+            <div class="content">
+                @if (string.IsNullOrEmpty(Model.User.Name) && string.IsNullOrEmpty(Model.User.Family))
+                {
+                    <h1>نام و نام خانوادگی را تنظیم کنید</h1>
+                }
+                else
+                {
+                    <h1>@(Model.User.Name + " " + Model.User.Family)</h1>
+                }
+                <div class="mojode">
+                    <h2>
+                        @(Model.User.Wallet / 10) تومن
+                    </h2>
+                    <span>موجودی</span>
+                </div>
+                <button> <a asp-controller="Account" asp-action="Charge"> شارژ اکانت </a></button>
+            </div>
+        </div>
+    </div>
+    <div class="profile-content">
+        <h6>تغیر اطلاعات کاربری</h6>
+        <form asp-action="ChangeData" asp-controller="Account" method="post" enctype="multipart/form-data" id="formeSubmit" name="formeSubmit">
+            <input type="text" name="firstName" placeholder="نام">
+            <input type="text" name="lastName" placeholder="نام خانوادگی">
+            <div class="cph-box"></div>
+            <input type="submit" value="تغییر">
+        </form>
+
+        <form method="POST" asp-controller="Account" asp-action="Logout">
+            <input type="submit" value="خروج">
+        </form>
+    </div>
+</header>
+<main class="PMain">
+    <div class="title">
+        <span></span>
+        <h3>خرید ها</h3>
+        <span></span>
+    </div>
+    <div class="all">
+        @foreach (var chapter in Model.Chapters.Entities)
+        {
+            <div class="itame">
+                <div class="imgBox">
+                    <a href="#">
+                        <img src="https://dl.aosasori.com/BookImages/@(chapter.Season.Book.Image)" alt="">
+                    </a>
+                </div>
+                <div class="content">
+                    <h4>چپتر @chapter.ChapterNumber  @chapter.Season.Book.Name</h4>
+                    <a asp-controller="Home" asp-action="Read" asp-route-id="@chapter.Id">رفتن</a>
+                </div>
+            </div>
+        }
+
+
+    </div>
+
+
+
+
+    <div class="buttomCant">
+        @if (Model.Chapters.PageId != 1)
+        {
+            <button class="Next">
+                <a asp-action="Index" asp-controller="UserPanel" asp-route-id="@Model.Chapters.PageId -1">
+                    قبلی
+                </a>
+            </button>
+        }
+
+        @if (Model.Chapters.PageId < 5)
+        {
+
+            <div class="nambers">
+                @for (int i = 1; i <= 5; i++)
+                {
+                    @if (i <= Model.Chapters.PageCount)
+                    {
+                        <a asp-action="Index" asp-controller="UserPanel" asp-route-id="@i">@i</a>
+                    }
+                }
+
+            </div>
+        }
+        else if (Model.Chapters.PageId > Model.Chapters.PageCount - 3)
+        {
+            <div class="nambers">
+                @for (int i = Model.Chapters.PageCount - 5; i <= Model.Chapters.PageCount; i++)
+                {
+                    <a asp-action="Index" asp-controller="UserPanel" asp-route-id="@i">@i</a>
+                }
+            </div>
+
+        }
+        else
+        {
+            <div class="nambers">
+                @for (int i = Model.Chapters.PageId - 2; i <= Model.Chapters.PageId + 2; i++)
+                {
+                    <a asp-action="Index" asp-controller="UserPanel" asp-route-id="@i">@i</a>
+                }
+            </div>
+        }
+
+
+        @if (Model.Chapters.PageId != Model.Chapters.PageCount)
+        {
+            <button class="Back">
+                <a asp-action="Index" asp-controller="UserPanel" asp-route-id="@Model.Chapters.PageId + 1">
+                    بعدی
+                </a>
+            </button>
+        }
+
+    </div>
+
+
+</main>
+
+
+
+@section Style{
+    <link rel="stylesheet" type="text/css" href="~/css/panel.css">
+}

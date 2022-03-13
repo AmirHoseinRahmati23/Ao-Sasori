@@ -1,0 +1,43 @@
+﻿@model IEnumerable<IranOtaku.Data.Entities.BookReport>
+
+@{
+    ViewData["Title"] = "گزارش های قبلی";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Book.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReportName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoneyCount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Detail" asp-controller="Books" asp-route-id="@item.BookId">
+                    @Html.DisplayFor(modelItem => item.Book.Name)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoneyCount)
+            </td>
+            <td>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

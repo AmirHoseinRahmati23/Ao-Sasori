@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "موفقیت ثبت نام";
+}
+
+
+
+<section class="loginContainer">
+    <div class="loginTitle">
+        <h6>ثبت نام با موفقیت انجام شد</h6>
+    </div>
+    <div class="loginForm">
+        <div class="loginCC">
+            <a asp-action="RegisterAndLogin" asp-controller="Account">ورود به سایت</a>
+        </div>
+    </div>
+</section>
+
+
+@section Style{
+    <link rel="stylesheet" type="text/css" href="~/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}

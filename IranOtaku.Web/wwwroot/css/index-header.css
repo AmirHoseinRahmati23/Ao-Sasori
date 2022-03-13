@@ -1,0 +1,314 @@
+.Iheader {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation-name: Iheader-animate;
+  animation-direction: alternate-reverse;
+  animation-duration: 45s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-timing-function: ease-in-out;
+  z-index: 1;
+}
+
+@keyframes Iheader-animate {
+  0% {
+    width: 100%;
+    background: linear-gradient(rgba(16, 14, 23, 0.3), rgba(16, 14, 23, 0.4), rgba(16, 14, 23, 0.5), rgba(16, 14, 23, 0.6), rgba(16, 14, 23, 0.7), rgba(16, 14, 23, 0.8), rgba(16, 14, 23, 0.9), rgba(16, 14, 23, 1)), url('http://s11.picofile.com/file/8407133900/1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  20% {
+    width: 100%;
+    background: linear-gradient(rgba(16, 14, 23, 0.3), rgba(16, 14, 23, 0.4), rgba(16, 14, 23, 0.5), rgba(16, 14, 23, 0.6), rgba(16, 14, 23, 0.7), rgba(16, 14, 23, 0.8), rgba(16, 14, 23, 0.9), rgba(16, 14, 23, 1)), url('http://s11.picofile.com/file/8407133868/3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  40% {
+    width: 100%;
+    background: linear-gradient(rgba(16, 14, 23, 0.3), rgba(16, 14, 23, 0.4), rgba(16, 14, 23, 0.5), rgba(16, 14, 23, 0.6), rgba(16, 14, 23, 0.7), rgba(16, 14, 23, 0.8), rgba(16, 14, 23, 0.9), rgba(16, 14, 23, 1)), url('http://s10.picofile.com/file/8407133884/2.jpg');
+    background-position: 0px 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  60% {
+    width: 100%;
+    background: linear-gradient(rgba(16, 14, 23, 0.3), rgba(16, 14, 23, 0.4), rgba(16, 14, 23, 0.5), rgba(16, 14, 23, 0.6), rgba(16, 14, 23, 0.7), rgba(16, 14, 23, 0.8), rgba(16, 14, 23, 0.9), rgba(16, 14, 23, 1)), url('http://s10.picofile.com/file/8407133842/4.jpg');
+    background-position: 0px 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  100% {
+    width: 100%;
+    background: linear-gradient(rgba(16, 14, 23, 0.6), rgba(16, 14, 23, 0.6), rgba(16, 14, 23, 0.7), rgba(16, 14, 23, 0.7), rgba(16, 14, 23, 0.8), rgba(16, 14, 23, 0.8), rgba(16, 14, 23, 0.9), rgba(16, 14, 23, 1)), url('http://s11.picofile.com/file/8407133784/5.jpg');
+    background-position: 0px 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all .4s ease;
+  }
+}
+
+.Ileft-social {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 150px;
+  background-color: rgba(16, 14, 23, 1);
+  z-index: 2;
+  border-top: 2px solid #57e0b9;
+  border-bottom: 2px solid #57e0b9;
+  border-right: 2px solid #57e0b9;
+  box-shadow: 0 0 5px 0px #00976c;
+  border-radius: 0 10px 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 5px;
+  z-index: 2;
+}
+
+.Ileft-social .telegram {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+.Ileft-social .instagram {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+
+}
+
+.Ileft-social .twitter {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.Ileft-social img {
+  width: 30px;
+  height: 30px;
+}
+
+.Ileft-social .instagram a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* iTopBaner */
+.iTopBaner {
+  position: absolute;
+  width: 1300px;
+  height: 500px;
+  top: 85vh;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  z-index: 1;
+}
+.broadcastCon {
+  width: 33.33333333333333%;
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #00f5d4;
+	box-shadow: 0 0 5px 1px #00f5d4;
+}
+.broadcastCon .broadcastTitle {
+  width: 100%;
+  height: 40px;
+  background-color: #1d2029;
+  border-bottom: 1px solid #00f5d4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.broadcastCon .broadcastTitle span {
+  font-size: 20px;
+  padding: 2px 0;
+  font-family: Yekan;
+  color: #fff;
+}
+.broadcastCon .wapper {
+  width: 97%;
+	height: 455px;
+  border-radius: 0 10px 10px 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.broadcastArticle{
+  width: 100%;
+  height: 140px;
+  margin: 5px 0;
+  display: flex;
+  justify-content:space-around;
+  background-color: #1e2129;
+  border-radius: 10px;
+}
+.broadcastArticleImg{
+  width: 100px;
+  height: 140px;
+  border-radius: 10px;
+}
+.broadcastArticleImg img{
+  width: 100px;
+  height: 140px;
+  border-radius: 10px;
+}
+.broadcastArticleContant{
+  width: 100%;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.broadcastArticleName{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  white-space: wrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  padding: 0 10px;
+}
+.broadcastArticleName a{
+  font-size: 12px;
+  font-weight: normal;
+}
+.bACCon{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.bACCon .ulEpCon{
+  width: 100%;
+  justify-content: space-around;
+  font-size: 12px;
+}
+.bACCon .ulEpCon .Episodes{
+  font-family: 'IRANSans' , sans-serif;
+  color: #00cc6d;
+}
+.bACCon .ulEpCon .Season{
+  color: #56cfe1;
+}
+.bACCon .ulEpCon .Condition{
+  color: #f2cc8f;
+}
+.ulBBiuCon{
+  margin-top: 20px;
+  width: 100%;
+  color: #7b7b8a;
+}
+.broadcastCon .wapper::-webkit-scrollbar {
+  width: 10px;
+  box-shadow: none;
+}
+
+.broadcastCon .wapper::-webkit-scrollbar-track {
+  border: 5px solid #2b2d42;
+  box-shadow: none;
+}
+
+.broadcastCon .wapper::-webkit-scrollbar-thumb {
+  box-shadow: none;
+  background: #00a896;
+  border-radius: 5px;
+}
+@media screen and (max-width: 1300px) {
+  .iTopBaner {
+    width: 1200px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .iTopBaner {
+    width: 1100px;
+  }
+  
+}
+@media screen and (max-width: 1100px) {
+  .iTopBaner {
+    width: 1000px;
+  }
+  .bACCon .ulEpCon{
+    font-size: 10px;
+  }
+  .broadcastArticleName a{
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .iTopBaner {
+    width: 700px;
+    height: 1600px;
+    align-items: center;
+    flex-direction: column;
+  }
+  .broadcastCon{
+    margin: 20px 0 !important;
+    width: 95%;
+  }
+  .bACCon .ulEpCon{
+    font-size: 14px;
+  }
+  .broadcastArticleName a{
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .iTopBaner {
+    width: 95%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .broadcastCon{
+    margin: 30px 0 !important;
+  }
+}
+
+@media screen and (max-width: 565px) {
+  .bACCon .ulEpCon{
+    font-size: 10px;
+  }
+  .broadcastArticleName a{
+    font-size: 12px;
+  }
+
+}

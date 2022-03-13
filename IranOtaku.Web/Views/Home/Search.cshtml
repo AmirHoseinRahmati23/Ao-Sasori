@@ -1,0 +1,180 @@
+﻿@model PagingGenericViewModel<Book>
+@{
+    ViewData["Title"] = "جستجو";
+    int nextPage = Model.PageId + 1;
+    int previousPage = Model.PageId - 1;
+}
+
+
+
+@if (Model.Entities.Any())
+{
+
+    <h1 class="h1Title">@Model.Name</h1>
+    <section class="nexPrevious1">
+
+        @if (Model.PageId != 1)
+        {
+            <div class="previous">
+                <div class="previousBox"><a asp-action="Search" asp-route-text="@Model.Name" asp-route-id="@previousPage">صفحه قبلی</a></div>
+            </div>
+        }
+
+        <div class="wat">
+
+
+            @if (Model.PageId < 5)
+            {
+                @for (int i = 1; i <= 5; i++)
+                {
+                    if (i <= Model.PageCount)
+                    {
+                        <div class="@( (i == Model.PageId)? "pBActive": "" ) ">
+                            <a asp-action="Search" asp-route-text="@Model.Name" asp-route-id="@i">@i</a>
+                        </div>
+                    }
+                }
+            }
+            else if (Model.PageId > Model.PageCount - 3)
+            {
+                for (int i = Model.PageCount - 5; i <= Model.PageCount; i++)
+                {
+                    <div class="@( (i == Model.PageId)? "pBActive": "" ) ">
+                        <a asp-action="Search" asp-route-text="@Model.Name" asp-route-id="@i">@i</a>
+                    </div>
+                }
+            }
+            else
+            {
+                for (int i = Model.PageId - 2; i <= Model.PageId + 2; i++)
+                {
+                    <div class="@( (i == Model.PageId)? "pBActive": "" ) ">
+                        <a asp-action="Search" asp-route-text="@Model.Name" asp-route-id="@i">@i</a>
+                    </div>
+                }
+            }
+
+
+
+            @if (Model.PageId != Model.PageCount)
+            {
+                <div class=""><a asp-action="Search" asp-route-text="@Model.Name" asp-route-id="@Model.PageCount">@Model.PageCount</a></div>
+            }
+        </div>
+
+        @if (Model.PageId != Model.PageCount)
+        {
+            <div class="previous">
+                <div class="previousBox"><a asp-action="Search" asp-route-text="@Model.Name" asp-route-id="@nextPage">صفحه بعدی</a></div>
+            </div>
+        }
+
+
+    </section>
+
+
+    <main class="allMain">
+        @foreach (var book in Model.Entities)
+        {
+            <article class="Iarticle">
+                <div class="img">
+                    <img src="https://dl.aosasori.com/BookImages/@(book.Image)" alt="@book.Name">
+                </div>
+                <div class="contant">
+                    <h2>@book.Name</h2>
+                    <ul>
+                        <li class="white">@book.Age</li>
+                        <li class="white">@book.RealeseDate</li>
+                        <li class="green">@book.Translator</li>
+                    </ul>
+                    <ul class="genre">
+                        @foreach (var category in book.Categories)
+                        {
+                            <li>@category.Name</li>
+                        }
+                    </ul>
+                </div>
+                <div class="Iarticlecontant">
+                    <p>
+                        @book.ShortStory
+                    </p>
+                    <a asp-action="Detail" asp-controller="Home" asp-route-id="@book.Id">ادامه</a>
+                </div>
+            </article>
+        }
+
+
+    </main>
+
+    <section class="nexPrevious1">
+
+        @if (Model.PageId != 1)
+        {
+            <div class="previous">
+                <div class="previousBox"><a asp-action="Search" asp-route-text="@Model.Name" asp-route-id="@previousPage">صفحه قبلی</a></div>
+            </div>
+        }
+
+        <div class="wat">
+
+
+            @if (Model.PageId < 5)
+            {
+                @for (int i = 1; i <= 5; i++)
+                {
+                    if (i <= Model.PageCount)
+                    {
+                        <div class="@( (i == Model.PageId)? "pBActive": "" ) ">
+                            <a asp-action="Search" asp-route-text="@Model.Name" asp-route-id="@i">@i</a>
+                        </div>
+                    }
+                }
+            }
+            else if (Model.PageId > Model.PageCount - 3)
+            {
+                for (int i = Model.PageCount - 5; i <= Model.PageCount; i++)
+                {
+                    <div class="@( (i == Model.PageId)? "pBActive": "" ) ">
+                        <a asp-action="Search" asp-route-text="@Model.Name" asp-route-id="@i">@i</a>
+                    </div>
+                }
+            }
+            else
+            {
+                for (int i = Model.PageId - 2; i <= Model.PageId + 2; i++)
+                {
+                    <div class="@( (i == Model.PageId)? "pBActive": "" ) ">
+                        <a asp-action="Search" asp-route-text="@Model.Name" asp-route-id="@i">@i</a>
+                    </div>
+                }
+            }
+
+
+
+            @if (Model.PageId != Model.PageCount)
+            {
+                <div class=""><a asp-action="Search" asp-route-text="@Model.Name" asp-route-id="@Model.PageCount">@Model.PageCount</a></div>
+            }
+        </div>
+
+        @if (Model.PageId != Model.PageCount)
+        {
+            <div class="previous">
+                <div class="previousBox"><a asp-action="Search" asp-route-text="@Model.Name" asp-route-id="@nextPage">صفحه بعدی</a></div>
+            </div>
+        }
+
+
+    </section>
+
+}
+else
+{
+    <h1 class="h1Title">نتیجه ای برای @Model.Name پیدا نشد</h1>
+}
+
+
+
+@section Style{
+    <link rel="stylesheet" type="text/css" href="~/css/allMain.css">
+}

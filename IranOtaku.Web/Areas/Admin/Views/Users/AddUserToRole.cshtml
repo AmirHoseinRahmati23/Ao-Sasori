@@ -1,0 +1,23 @@
+﻿@inject UserManager<User> userManager;
+@model IEnumerable<RoleListViewModel>
+
+@{
+    ViewData["Title"] = "دادن نقش به کاربر";
+}
+
+<h2>دادن نقش به کاربر</h2>
+
+
+<form method="post" asp-action="AddUserToRole">
+    @foreach (var item in Model)
+    {
+
+        <input type="checkbox" name="roles" value="@item.RoleName" 
+               @((await userManager.IsInRoleAsync(ViewBag.User,item.RoleName.ToUpper()))? "checked" : "") 
+        /> 
+        <label> @Html.DisplayFor(model => item.RoleName) </label>
+        <br />
+    }
+    <input type="hidden" value="@ViewBag.User.Id" name="userId"/>
+    <input type="submit" class="btn btn-success"/>
+</form>

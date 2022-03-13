@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "عوض کردن مرچنت";
+}
+
+<section class="loginContainer">
+    <div class="loginTitle">
+        <h6>عوض کردن مرچنت</h6>
+    </div>
+    <div class="loginForm">
+        <form asp-action="ChangeMerchant" method="post">
+            <div class="InputBox">
+                <input name="merchant" type="text" placeholder="مرچنت">
+            </div>
+            <div class="loginCC">
+                <input type="submit" value="عوض کردن" class="btnLogin">
+            </div>
+        </form>
+    </div>
+</section>
+
+
+@section Style{
+    <link rel="stylesheet" type="text/css" href="~/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}

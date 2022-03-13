@@ -1,0 +1,34 @@
+﻿@model ChapterImage
+
+@{
+    ViewData["Title"] = "ویرایش صفحه";
+}
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditImage" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ImageId" />
+            <input type="hidden" asp-for="ChapterId" />
+            <div class="form-group">
+                <label>عکس</label>
+                <input type="file" name="imageFile" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageNumber" class="control-label"></label>
+                <input asp-for="ImageNumber" class="form-control" />
+                <span asp-validation-for="ImageNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ChapterImages" asp-route-id="@Model.ChapterId">بازگشت</a>
+</div>
+

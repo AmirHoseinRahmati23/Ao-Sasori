@@ -1,0 +1,37 @@
+﻿@model IranOtaku.Data.Entities.BookChapter
+
+@{
+    ViewData["Title"] = "اضافه کردن چپتر";
+}
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddChapter" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ChapterNumber" class="control-label"></label>
+                <input asp-for="ChapterNumber" class="form-control" />
+                <span asp-validation-for="ChapterNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" value="@ViewBag.SeasonId" asp-for="SeasonId" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="افزودن" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Chapters" asp-route-id="@ViewBag.SeasonId">بازگشت</a>
+</div>
+

@@ -1,0 +1,255 @@
+.nav {
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    /* box-shadow: 0 4px 80px #142e36; */
+    background-color: #100e17;
+    /* border-bottom: 4px solid #01251f; */
+    z-index: 2;
+}
+.menu_c {
+    width: 50px;
+    height: 50px;
+}
+.logo_c {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.searchBox_c {
+    width: 70%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.searchBox_c input {
+    width: 80%;
+    height: 40px;
+    padding: 5px 10px;
+    background-color: inherit;
+    border: none;
+    border: 1px solid #3f887e;
+    outline: none;
+    border-radius: 1px;
+    border-left: none;
+    color: #fff;
+    font-family: "Yekan", sans-serif;
+    font-size: 20px;
+    border-radius: 0 10px 10px 0;
+}
+::placeholder {
+    color: #eee;
+}
+.searchBox_c input::placeholder {
+    color: #72efdd;
+}
+
+.searchBox_c input:focus {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+.searchBox_c button {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    background-color: inherit;
+    border: 1px solid #3f887e;
+    margin-right: -2px;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.searchBox_c button img {
+    width: 30px;
+    height: 30px;
+}
+.login_c {
+    background-color: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login_c button {
+    background-color: inherit;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.login_c button img {
+    width: 40px;
+    border-radius: 5px;
+}
+.menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(16, 14, 23, 1);
+    clip-path: circle(20px at calc(100% - 35px) 35px);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu_btn {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    color: #fff;
+    z-index: 10;
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #00f38e, #00a1fc);
+}
+
+.menu_btn:hover {
+    border-bottom: 1px solid #57e0b9;
+    box-shadow: 0 0 5px 1px #57e0b9;
+}
+
+.menu_btn img {
+    width: 25px;
+    height: 25px;
+}
+
+#menuActive:checked ~ .menu {
+    clip-path: circle(75%);
+    position: fixed;
+}
+
+#menuActive:checked ~ body {
+    overflow: hidden;
+}
+.menu_c input {
+    display: none;
+}
+.logo_c a {
+    text-decoration: none;
+    margin-top: 10px;
+    font-size: 50px;
+    font-family: Aviny;
+    line-height: 0;
+    word-spacing: 5px;
+    font-weight: 400;
+    color: #00dfae;
+}
+.logo_c a:hover {
+    color: #00ffc8;
+}
+
+.sebadkhrid {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sebadkhrid a img {
+    width: 40px;
+}
+.sebadkhrid span {
+    position: absolute;
+    color: #ffffff;
+    top: 25px;
+    right: 5px;
+    width: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 22px;
+    background: #d00000;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 12px;
+}
+
+.nenuContainer {
+    position: fixed;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 10px;
+}
+.nenuContainer ul {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.nenuContainer ul li {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 0;
+    margin: 10px 0;
+    background: linear-gradient(90deg, #004646, #002838, #001027);
+    border-radius: 10px;
+    border: 1px solid #00241c;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    transition: all 0.3s;
+}
+.nenuContainer ul li a {
+    width: 100%;
+}
+.nenuContainer ul li:hover {
+    border: 1px solid #00ffd5;
+    background: linear-gradient(90deg, #003131, #00202c, #001027);
+    transition: all 0.3s;
+}
+@media only screen and (max-width: 992px) {
+    .logo_c a {
+        font-size: 35px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .searchBox_c {
+        width: 60%;
+    }
+}
+@media only screen and (max-width: 568px) {
+    .nav {
+        padding: 5px;
+    }
+    .logo_c a {
+        font-size: 20px;
+    }
+    .searchBox_c {
+        width: 60%;
+        height: 30px;
+    }
+    .searchBox_c input {
+        height: 30px;
+        font-size: 14px;
+    }
+    .searchBox_c button {
+        height: 30px;
+    }
+    .login_c button img {
+        width: 25px;
+        border-radius: 5px;
+    }
+}

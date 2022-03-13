@@ -1,0 +1,57 @@
+﻿@model HomePageSlider
+
+@{
+    ViewData["Title"] = "اعضای اسلایدر";
+}
+
+@if (Model.Items.Count() < 10)
+{
+    <a asp-action="AddItem" asp-route-id="@ViewBag.SliderId">افزودن</a>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                عکس
+            </th>
+            <th>
+                اسم
+            </th>
+            <th>
+                دیگر اسم ها
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td class="w-25">
+                    @if (item.ImageIsUploaded)
+                    {
+                        <img class="mw-100" src="https://dl.aosasori.com/BookImages/@(item.Image)" alt=" کتاب @item.Name" />
+                    }
+                    else
+                    {
+                        <img class="mw-100" src="~/DefaultImages/Default.png" alt=" کتاب @item.Name" />
+                    }
+                </td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.OtherNames
+                </td>
+                <td>
+                    <form asp-action="DeleteItem">
+                        <input type="hidden" value="@item.Id" name="id" />
+                        <input type="hidden" value="@ViewBag.SliderId" name="sliderId" />
+                        <input type="submit" value="حذف" class="btn btn-danger" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
