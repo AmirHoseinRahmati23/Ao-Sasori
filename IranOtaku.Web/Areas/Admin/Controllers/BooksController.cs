@@ -352,6 +352,7 @@ namespace IranOtaku.Web.Areas.Admin.Controllers
             chapter.IsDeleted = true;
             chapter.ChapterNumber = 0;
             await db.SaveChangesAsync();
+            
 
             foreach (var image in chapter.Images)
             {
@@ -568,19 +569,13 @@ namespace IranOtaku.Web.Areas.Admin.Controllers
                     await imageFile.CopyToAsync(stream);
                 }
 
-                using (var client = new FtpClient("171.22.24.61", "pz13195", "x7JdBaZH"))
+                var result = await UploadFile("", "", "", path, fileName);
+                if(result == FtpStatus.Failed)
                 {
-                    var token = new CancellationToken();
-                    await client.ConnectAsync(token);
-
-                    var result = await client.UploadFileAsync(path, "/public_html/ChapterParts/" + fileName
-                        , FtpRemoteExists.NoCheck, true);
-                    System.IO.File.Delete(path);
-                    if (result == FtpStatus.Failed)
-                    {
-                        return RedirectToAction(nameof(ChapterImages), name, new { id = image.ChapterId });
-                    }
+                    ModelState.AddModelError("", "عملیات با شکست مواجه شد");
+                    return View(image);
                 }
+                
 
             }
 
@@ -608,12 +603,13 @@ namespace IranOtaku.Web.Areas.Admin.Controllers
         public async Task<IActionResult> AddImagesByZip(IFormFile imageFile, int chapterId)
         {
 
-
             #region Add Image Files
-
+            // allocating file name
             var fileName = NameGenerator.CreateName() + Path.GetExtension(imageFile.FileName);
             if (imageFile != null)
             {
+
+                // uploading zip file to server
                 var directory = Directory.GetCurrentDirectory() + "/wwwroot" +
                 "/ChapterParts" + "/";
                 var path = directory + fileName;
@@ -622,16 +618,70 @@ namespace IranOtaku.Web.Areas.Admin.Controllers
                     await imageFile.CopyToAsync(stream);
                 }
 
+                // extracting zip file
                 await Task.Run(() =>
                 {
                     ZipFile.ExtractToDirectory(path, directory);
                 });
+
+                // deleting extracted zip file(becouse it's content is already extracted)
                 System.IO.File.Delete(path);
 
 
-                var images = Directory.GetFiles(directory);
-                var folders = Directory.GetDirectories(directory);
 
+                // definind variables, one for folders inside the zip file, one temp variable for folders, and one for total images
+                List<string> folders = new List<string>(),
+                    tempFolders = new List<string>();
+                var images = new List<string>();
+
+                // adding the main directory that zip file is extracted in to folders list
+                folders.Add(directory);
+
+                // adding all images, inside all folders to the image list
+                while (folders.Any())
+                {
+                    foreach (var folder in folders)
+                    {
+                        images.AddRange(Directory.GetFiles(folder));
+                        tempFolders.AddRange(Directory.GetDirectories(folder));
+                    }
+                    folders.Clear();
+                    folders.AddRange(tempFolders);
+                    tempFolders.Clear();
+                }
+                
+                
+                var result = await UploadImages(images, chapterId);
+                
+                if (result == null)
+                {
+                    return RedirectToAction(nameof(ChapterImages), name, new { id = chapterId });
+                }
+                else if (result.Contains(FtpStatus.Failed))
+                {
+                    int failureRate = result.Where(r => r == FtpStatus.Failed).Count();
+                    ModelState.AddModelError("", $"failed to upload a total of {failureRate} items.");
+                    return View(model :imageFile);
+                }
+
+
+
+
+                await db.SaveChangesAsync();
+            }
+
+
+
+            return RedirectToAction(nameof(ChapterImages), name, new { id = chapterId });
+            #endregion
+
+
+
+            #region Upload Images
+
+            async Task<List<FtpStatus>> UploadImages(IEnumerable<string> images, int chapterId)
+            {
+                var results = new List<FtpStatus>();
                 if (images.Any())
                 {
                     foreach (var imagePath in images)
@@ -648,116 +698,40 @@ namespace IranOtaku.Web.Areas.Admin.Controllers
                         else
                             image.ImageNumber = 1;
 
+                        var result = await UploadFile("", "", "", imagePath, imageName);
+                        results.Add(result);
 
-
-                        using (var client = new FtpClient("", "", ""))
-                        {
-                            var token = new CancellationToken();
-                            await client.ConnectAsync(token);
-
-                            var result = await client.UploadFileAsync(imagePath, "/public_html/ChapterParts/" + imageName
-                                , FtpRemoteExists.NoCheck, true);
-                            System.IO.File.Delete(imagePath);
-                            if (result == FtpStatus.Failed)
-                            {
-                                return RedirectToAction(nameof(ChapterImages), name, new { id = chapterId });
-                            }
-                        }
 
                         await db.AddAsync(image);
                     }
+
+                    return results;
                 }
-                if (folders.Any())
+                else
                 {
-                    foreach (var folder in folders)
-                    {
-                        var folderImages = Directory.GetFiles(folder);
-                        foreach (var folderImagePath in folderImages)
-                        {
-                            string imageName = NameGenerator.CreateName() + Path.GetExtension(folderImagePath);
-                            var image = new ChapterImage()
-                            {
-                                ChapterId = chapterId,
-                                ImageName = imageName
-                            };
-                            if (int.TryParse(Path.GetFileNameWithoutExtension(folderImagePath), out int imageNumber))
-                                image.ImageNumber = imageNumber;
-                            else
-                                image.ImageNumber = 1;
-
-                            using (var client = new FtpClient("", "", ""))
-                            {
-                                var token = new CancellationToken();
-                                await client.ConnectAsync(token);
-
-                                var result = await client.UploadFileAsync(folderImagePath, "/public_html/ChapterParts/" + imageName
-                                    , FtpRemoteExists.NoCheck, true);
-                                System.IO.File.Delete(folderImagePath);
-                                if (result == FtpStatus.Failed)
-                                {
-                                    return RedirectToAction(nameof(ChapterImages), name, new { id = chapterId });
-                                }
-                            }
-
-                            await db.AddAsync(image);
-                        }
-
-                        var folderDirectories = Directory.GetDirectories(folder);
-                        if (folderDirectories.Any())
-                        {
-                            foreach(var folderDirectory in folderDirectories)
-                            {
-                                folderImages = Directory.GetFiles(folderDirectory);
-                                foreach (var folderImagePath in folderImages)
-                                {
-                                    string imageName = NameGenerator.CreateName() + Path.GetExtension(folderImagePath);
-                                    var image = new ChapterImage()
-                                    {
-                                        ChapterId = chapterId,
-                                        ImageName = imageName
-                                    };
-                                    if (int.TryParse(Path.GetFileNameWithoutExtension(folderImagePath), out int imageNumber))
-                                        image.ImageNumber = imageNumber;
-                                    else
-                                        image.ImageNumber = 1;
-
-                                    using (var client = new FtpClient("", "", ""))
-                                    {
-                                        var token = new CancellationToken();
-                                        await client.ConnectAsync(token);
-
-                                        var result = await client.UploadFileAsync(folderImagePath, "/public_html/ChapterParts/" + imageName
-                                            , FtpRemoteExists.NoCheck, true);
-                                        System.IO.File.Delete(folderImagePath);
-                                        if (result == FtpStatus.Failed)
-                                        {
-                                            return RedirectToAction(nameof(ChapterImages), name, new { id = chapterId });
-                                        }
-                                    }
-
-                                    await db.AddAsync(image);
-                                }
-
-                                Directory.Delete(folderDirectory);
-                            }
-                        }
-
-                        Directory.Delete(folder);
-                    }
+                    return null;
                 }
 
 
-                await db.SaveChangesAsync();
             }
-
-
-
-            return RedirectToAction(nameof(ChapterImages), name, new { id = chapterId });
             #endregion
 
         }
 
 
+        private async Task<FtpStatus> UploadFile(string host, string user, string pass, string filePath, string fileName)
+        {
+            using (var client = new FtpClient(host, user, pass))
+            {
+                var token = new CancellationToken();
+                await client.ConnectAsync(token);
+
+                var result = await client.UploadFileAsync(filePath, "/public_html/ChapterParts/" + fileName
+                    , FtpRemoteExists.NoCheck, true);
+                System.IO.File.Delete(filePath);
+                return result;
+            }
+        }
 
         [Route("{controller}/{action}/{id}")]
         [HttpGet]
