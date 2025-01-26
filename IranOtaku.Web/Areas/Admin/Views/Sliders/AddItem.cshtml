@@ -1,0 +1,28 @@
+﻿@model int
+
+@{
+    ViewData["Title"] = "اضافه کردن به اسلایدر";
+}
+
+<h2>اضافه کردن به اسلایدر</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddItem">
+            <div class="form-group">
+                <input name="sliderId" value="@Model" type="hidden"/>
+                <label class="control-label">شناسه عددی</label>
+                <input class="form-control" name="bookId" type="text" placeholder="شناسه عددی"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="اضافه کردن" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">بازگشت</a>
+</div>
+

@@ -1,0 +1,29 @@
+﻿@model IranOtaku.Data.Entities.HomePageSlider
+
+@{
+    ViewData["Title"] = "افزودن اسلایدر";
+}
+
+
+<h4>افزودن اسلایدر</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SliderName" class="control-label"></label>
+                <input asp-for="SliderName" class="form-control" />
+                <span asp-validation-for="SliderName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="افزودن" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">بازگشت</a>
+</div>
+

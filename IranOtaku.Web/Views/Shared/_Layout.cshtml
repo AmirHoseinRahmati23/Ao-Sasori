@@ -1,0 +1,91 @@
+﻿
+@inject SignInManager<User> _signInManager;
+@inject UserManager<User> _userManager;
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @RenderSection("MetaTags" , required : false)
+    <title>عقرب آبی | @ViewData["Title"]</title>
+    <link rel="stylesheet icon" href="/img/castle.png">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    @RenderSection("Style", required: false)
+    <script src="~/js/swiper-bundle.min.js"></script>
+</head>
+<body>
+    <nav class="nav">
+        <div class="logo_c">
+            <a asp-action="Index" asp-controller="Home" asp-area="">Ao Sasori</a>
+        </div>
+        <form class="searchBox_c" asp-controller="Home" asp-action="Search" method="get">
+            <div class="searchBox_c">
+                <input type="hidden" name="id" value="1" />
+                <input type="search" name="text" placeholder="جستجو">
+                <button type="submit"><img src="~/img/search.png"></button>
+            </div>
+        </form>
+        <div class="login_c">
+            @if (_signInManager.IsSignedIn(User))
+            {
+                <a asp-controller="UserPanel" asp-action="index">
+                    @{
+                        var user = await _userManager.GetUserAsync(User);
+                    }
+                    <button type="button">
+                        @if (string.IsNullOrEmpty(user.Image))
+                        {
+                            <img src="~/DefaultImages/profile.png">
+                        }
+                        else
+                        {
+                            <img src="https://dl.aosasori.com/UserImages/@(user.Image)">
+                        }
+                    </button>
+                </a>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="RegisterAndLogin">
+                    <button type="button"><img src="~/img/user.png"></button>
+                </a>
+            }
+        </div>
+    </nav>
+
+
+
+    @RenderBody()
+
+
+
+    <footer class="footer">
+        <div class="footerSocial">
+            <p>
+                © کپی‌رایت 2021 - 2020 تمامی حقوق متعلق به عقرب آبی است و استفاده و یا انتشار مطالب سایت در جای دیگر ممنوع می باشد
+            </p>
+        </div>
+        <div class="footerLogo">
+            <a asp-action="Index" asp-controller="Home" asp-area="">Ao Sasori</a>
+        </div>
+        <div class="Developers">
+            <p class="Yekan">طراحی و توسعه وب سایت توسط تیم توسعه<a href="#"> عقرب آبی </a>انجام میشود</p>
+        </div>
+    </footer>
+
+    <!-- script -->
+    <script src="~/js/Jquery.js"></script>
+    <script src="~/js/script.js" type="text/javascript"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVGSS6MHTS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-EVGSS6MHTS');
+    </script>
+    @RenderSection("Script", required: false)
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+﻿@model AddEpsodeViewModel
+
+@{
+    ViewData["Title"] = "اضافه کردن زیرنویس";
+}
+
+<div class="row">
+    <div class="col-md-4 col-sm-12 border-warning">
+        <h4>اضافه کردن زیرنویس با فایل</h4>
+        <form asp-action="AddSubtitleWithFile" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">فایل زیرنویس:</label>
+                <input class="form-control" type="file" asp-for="File" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Number" class="control-label"></label>
+                <input asp-for="Number" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input value="@ViewBag.SeasonId" type="hidden" asp-for="SeasonId" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="اضافه کردن" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-4 col-sm-12 border-success">
+        <h4>اضافه کردن زیرنویس با لینک</h4>
+        <form asp-action="AddSubtitleWithLink" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">لینک زیرنویس:</label>
+                <input class="form-control" asp-for="Link" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Number" class="control-label"></label>
+                <input asp-for="Number" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input value="@ViewBag.SeasonId" type="hidden" asp-for="SeasonId" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="اضافه کردن" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Subtitles" asp-route-id="@ViewBag.SeasonId">بازگشت</a>
+</div>
+

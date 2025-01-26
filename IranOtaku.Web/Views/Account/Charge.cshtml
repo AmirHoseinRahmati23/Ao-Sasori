@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "شارژ";
+}
+
+<section class="loginContainer">
+    <div class="loginTitle">
+        <h6>شارژ حساب</h6>
+    </div>
+    <div class="loginForm">
+        <form asp-action="Charge" method="post">
+            <div class="InputBox">
+                <label>مقدار مجاز : حداقل 1000 تومن</label>
+                <input name="amount" type="number" placeholder="مقدار شارژ(به تومن)">
+            </div>
+            <div class="loginCC">
+                <input type="submit" value="شارژ" class="btnLogin">
+            </div>
+        </form>
+    </div>
+</section>
+
+
+@section Style{
+    <link rel="stylesheet" type="text/css" href="~/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}
+<script>
+    @{
+        bool error = ViewBag.Error;
+    }
+    if (@(error)) {
+        alert("لطفا عددی از 1000 تومن به بالا وارد کنید");
+    }
+</script>

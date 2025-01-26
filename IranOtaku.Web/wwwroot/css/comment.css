@@ -1,0 +1,207 @@
+.comment{
+    margin-top: 50px;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.commentCon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.commentForm{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.commentForm span{
+    font-size: 25px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+textarea {
+    width: 600px;
+    height: 350px;
+    resize: none;
+    background-color: initial;
+    border: 2px solid rgb(0, 255, 234);
+    margin-right: 5px;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding: 5px 5px;
+    font-family: 'IRANSans' , Roboto;
+}
+textarea:focus{
+    /* background-color: #17141d; */
+    box-shadow: 0 0 20px 2px rgb(0, 133, 104);
+}
+.commentForm input{
+    background-color: initial;
+    border: 2px solid rgb(0, 255, 234);
+    margin-right: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 250px;
+    height: 40px;
+    padding: 10px;
+    font-family: 'Vazir',Roboto;
+    font-size: 14px;
+    color: #fff;
+}
+.commentForm input:focus{
+    /* background-color: rgba(255, 255, 255, 0.050); */
+    box-shadow: 0 0 20px 2px rgb(0, 133, 104);
+}
+.commentForm form::placeholder {
+    color: #fff;
+}
+.submitAFB{
+    width: 150px !important;
+    color: #FFF;
+    padding: 0px !important;
+}
+.submitAFB:hover{
+    box-shadow: 0 0 10px 2px rgb(4, 163, 150);
+}
+.commentBox{
+    margin-top: 20px;
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid rgb(0, 255, 234);
+    border-bottom: 2px solid rgb(0, 255, 234);
+    box-shadow: 0 4px 80px #070509;
+    background-color: #17141d;
+    border-radius: 50px 50px 50px 50px;
+}
+.commentBoxReply{
+    width: 95%;
+    margin-right: 5%;
+    background-color: #110e16;
+    border-top: 1px solid rgb(0, 187, 171);
+    border-bottom: 1px solid rgb(0, 187, 171);
+}
+.admin{
+    border-top: 2px solid #07ffb5;
+    border-bottom: 2px solid  #07ffb5;
+}
+.adminReply{
+    width: 95%;
+    background-color: #110e16;
+    margin-right: 5%;
+    border-top: 1px solid #07ffb5;
+    border-bottom: 1px solid  #07ffb5;
+}
+.usertitle{
+    margin-top: 20px;
+    margin-right: 20px;
+    display: flex;
+}
+.userimg{
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    background-color: #333;
+}
+.title1{
+    display: flex;
+    margin-right: 10px;
+    flex-direction: column;
+    justify-content: center;
+}
+.title1 h6{
+    font-family: 'Vazir',Roboto;
+    font-size: 16px;
+}
+.title1 h6:nth-child(2){
+    font-size: 12px;
+    color: #747485;
+}
+.title1 h6:nth-child(3){
+    font-size: 12px;
+    color: #747485;
+}
+
+.userimg img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+}
+.usercomment{
+    width: 100%;
+    padding-right: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.usercomment .comment{
+    margin: 0;
+    width: 100%;
+    padding: 0 20px 20px 20px;
+    font-size: 14px;
+    line-height: 30px;
+    color: #ADADAE;
+    font-family: 'Vazir',Roboto;
+}
+.commetcontrol{
+    width: 100%;
+    height: 70px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.commetcontrol div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.commetcontrol button{
+    background-color: initial;
+    width: 40px;
+    height: 40px;
+    border: none;
+    margin-left: 20px;
+}
+.commetcontrol button img{
+    width: 40px;
+    height: 40px;
+}
+.commetcontrol span{
+    margin-left: 10px;
+    font-size: 18px;
+}
+.reply{
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+@media only screen and (max-width:1024px){
+    .comment{
+        width: 95%;
+    }
+}
+@media only screen and (max-width:768px){
+    textarea{
+        width: 95%;
+    }
+    .commentForm input{
+        width: 300px;
+    }
+}
+@media only screen and (max-width:480px){
+    textarea{
+        width: 95%;
+    }
+    .commentForm input{
+        width: 95%;
+    }
+}

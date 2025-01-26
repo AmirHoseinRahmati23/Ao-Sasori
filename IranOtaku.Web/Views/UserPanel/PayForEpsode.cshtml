@@ -1,0 +1,40 @@
+﻿@model AnimeEpsode
+@{
+    ViewData["Title"] = "پرداخت";
+}
+@if (ViewBag.Error != null)
+    {
+        <div class="loginContainer" asp-validation-summary="All" style="max-height : 70px">
+            <p>
+                @ViewBag.Message
+            </p>
+        </div>
+    }
+<section class="loginContainer">
+    <div class="loginTitle">
+        <h6>آیا از خرید قسمت @Model.EpsodeNumber مطمئنید؟</h6>
+    </div>
+    <div class="loginForm">
+        
+        <h3>قسمت @Model.EpsodeNumber از انیمه @Model.Season.Anime.Name به قیمت @Model.Price تومان</h3>
+
+        <div class="loginCC">
+            <a asp-action="Detail" asp-route-id="@Model.Season.AnimeId" asp-controller="Home">بازگشت</a>
+        </div>
+
+        <form asp-action="FinalPayForEpsode" asp-controller="UserPanel" method="post">
+            <div class="loginCC" >
+                <input type="hidden" value="@Model.EpsodeId" name="chapterId"/>
+                <input type="submit" value="خرید" />
+            </div>
+        </form>
+        
+    </div>
+</section>
+
+
+
+@section Style{
+    <link rel="stylesheet" type="text/css" href="~/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}

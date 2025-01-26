@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Category>
+
+
+<form method="post">
+    @foreach(var category in Model)
+    {
+        bool isExist = ((Book)ViewBag.Book).Categories.Any(c => c.Id == category.Id);
+
+        <div class="form-group">
+            <input name="categoryId" @( (isExist)? "checked" : " " ) type="checkbox" value="@category.Id" /> <label> @category.Name</label>
+        </div>
+        
+    }
+    <input type="hidden" value="@ViewBag.Book.Id" name="id"/>
+    <input type="submit" value="تایید" class="btn btn-success"/>
+</form>

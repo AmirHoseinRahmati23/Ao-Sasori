@@ -1,0 +1,50 @@
+﻿@model List<User>
+@inject UserManager<User> _userManager
+@{
+    ViewData["Title"] = "کاربران";
+    var user = await _userManager.GetUserAsync(User);
+}
+
+@if(user.Id == "b74ddd14-6340-4840-95c2-db12554843e5")
+{
+    <a asp-action="ClearWallets">خالی کردن کیف پول همه اعضا</a>
+}
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                نام کاربری
+            </th>
+            <th>
+                ایمیل
+            </th>
+            <th>
+                موجودی
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @(item.Wallet / 10) تومان
+            </td>
+            <td>|
+                <a asp-action="AddUserToRole" asp-route-id="@item.Id">اضافه کردن به نقش</a> |
+                <form asp-action="Delete" method="post">
+                    <input value="@item.Id" type="hidden" name="userId"/>
+                    <input type="submit" value="حذف" class="btn btn-danger" />
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

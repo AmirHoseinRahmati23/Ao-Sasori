@@ -1,0 +1,136 @@
+@import url("react.css");
+@import url("nav.css");
+@import url("index-main.css");
+@import url("footer.css");
+body{
+    height: 100vh;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+.allMain{
+    margin-top: 40px;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.Iarticle{
+    margin: 20px 15px;
+}
+.nexPrevious1{
+    margin-top: 30px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 5px 1px #72efdd;
+    border: 1px solid #72efdd;
+    transform: skew(15deg);
+
+}
+.wat{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transform: skew(-15deg);
+
+}
+.nexPrevious1 .wat > div{
+  width: 50px;
+  height: 100%;
+  background-color: #081c15;
+  font-size: 20px;
+  margin: 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: skew(15deg);
+  border-left: 1px solid #72efdd;
+  border-right: 1px solid #72efdd;
+}
+.nexPrevious1 .wat > div:hover{
+  background-color: #002b1c;
+  border-left: 3px solid #80ffdb;
+  border-right: 3px solid #80ffdb;
+}
+.nexPrevious1 .wat  a{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: skew(-15deg);
+}
+.nexPrevious1 .previous{
+  width: 100px;
+  height: 100%;
+  background-color: #081c15;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: skew(0deg);
+}
+.nexPrevious1 .previous .previousBox{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: skew(-15deg);
+
+}
+.nexPrevious1 .previous .previousBox a{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   font-size: 16px;
+}
+.pBActive{
+  border-left: 3px solid #80ffdb !important;
+  border-right: 3px solid #80ffdb !important;
+  background-color: #002b1c !important;
+}
+.nexPrevious1 .previous:hover{
+  background-color: #002b1c;
+  border-left: 3px solid #80ffdb !important;
+  border-right: 3px solid #80ffdb !important;
+}
+.h1Title{
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .nexPrevious1{
+    width: 95%;
+  }
+ .nexPrevious1 .wat > div{
+   font-size: 14px;
+  }
+ .nexPrevious1 .previous .previousBox a{
+   font-size: 12px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .nexPrevious1{
+   transform: skew(0deg);
+   height: 40px;
+  }
+  .wat{
+    transform: skew(0deg);
+  }
+ .nexPrevious1 .wat > div{
+  font-size: 12px;
+  transform: skew(0deg);
+  margin: 0;
+  }
+  .nexPrevious1 .wat  a{
+    transform: skew(0deg);
+  }
+ .nexPrevious1 .previous .previousBox a{
+   font-size: 10px;
+ }
+}

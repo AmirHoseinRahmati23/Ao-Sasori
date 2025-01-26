@@ -1,0 +1,139 @@
+﻿@model HomePageViewModel
+@{
+    ViewData["Title"] = "خانه";
+}
+
+
+
+
+<partial name="_SocialMedia" />
+
+
+<!-- START iTopBaner -->
+<section class="iTopBaner">
+    <partial name="_NewBooks" />
+</section>
+<!--END-Top Baner--->
+
+<main class="Imain">
+    @if (Model.Items.Count >= 1)
+    {
+        <partial name="_SpecialBook" model="@Model.Items[0]" />
+    }
+
+    @foreach (var slider in Model.Sliders)
+    {
+        <section class="cardSliderContainer">
+            <div class="cardSliderTitle">
+                <span>@slider.SliderName</span>
+            </div>
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+
+                    @foreach (var book in slider.Items)
+                    {
+                        <!-- Start Card -->
+                        <div class="swiper-slide">
+                            <article class="Iarticle">
+                                <div class="img">
+                                    <img src="https://dl.aosasori.com/BookImages/@(book.Image)" alt="@book.Name">
+                                </div>
+                                <div class="contant">
+                                    <h2>@book.Name </h2>
+                                    <ul>
+                                        <li class="green">@book.ChapterSize</li>
+                                        <li class="white">+ @book.Age</li>
+                                        <li class="white bold">@book.RealeseDate</li>
+                                    </ul>
+                                    <ul class="genre">
+                                        @foreach (var bookCat in book.Categories.Take(4))
+                                        {
+                                            <li>@bookCat.Name</li>
+                                        }
+                                    </ul>
+                                </div>
+                                <div class="Iarticlecontant">
+                                    <p>
+                                        @book.ShortStory
+                                    </p>
+                                    <a asp-controller="Home" asp-action="Detail" asp-route-id="@book.Id">ادامه</a>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- End Card -->
+                    }
+
+                </div>
+
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+    }
+
+    @if (Model.Items.Count >= 2)
+    {
+        <partial name="_SpecialBook" model="@Model.Items[1]" />
+    }
+
+
+    @foreach (var category in Model.Categories)
+    {
+        <section class="cardSliderContainer">
+            <div class="cardSliderTitle">
+                <span>@category.GroupName</span>
+            </div>
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+
+                    @foreach (var book in category.Books)
+                    {
+                        <!-- Start Card -->
+                        <div class="swiper-slide">
+                            <article class="Iarticle">
+                                <div class="img">
+                                    <img src="https://dl.aosasori.com/BookImages/@(book.Image)" alt="@book.Name">
+                                </div>
+                                <div class="contant">
+                                    <h2>@book.Name </h2>
+                                    <ul>
+                                        <li class="green">@book.ChapterSize</li>
+                                        <li class="white">+ @book.Age</li>
+                                        <li class="white bold">@book.RealeseDate</li>
+                                    </ul>
+                                    <ul class="genre">
+                                        @foreach (var bookCat in book.Categories.Take(4))
+                                        {
+                                            <li>@bookCat.Name</li>
+                                        }
+                                    </ul>
+                                </div>
+                                <div class="Iarticlecontant">
+                                    <p>
+                                        @book.ShortStory
+                                    </p>
+                                    <a asp-controller="Home" asp-action="Detail" asp-route-id="@book.Id">ادامه</a>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- End Card -->
+                    }
+
+                </div>
+
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+    }
+
+    @if (Model.Items.Count == 3)
+    {
+        <partial name="_SpecialBook" model="@Model.Items[2]" />
+    }
+
+</main>

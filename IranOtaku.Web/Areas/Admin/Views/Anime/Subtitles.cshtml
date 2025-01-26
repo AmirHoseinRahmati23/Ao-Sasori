@@ -1,0 +1,41 @@
+﻿@model AnimeSeason
+
+@{
+    ViewData["Title"] = "زیرنویس ها";
+}
+
+<p>
+    <a asp-action="AddSubtitle" asp-route-id="@Model.Id">افزودن</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                شماره چپتر
+            </th>
+            <th>
+                قیمت(به تومان)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Subtitles)
+{
+        <tr>
+            <td>
+                @item.SubtitleNumber
+            </td>
+            <td>
+                @item.Price
+            </td>
+            <td>
+                <form method="post" asp-action="DeleteSubtitle">
+                    <input name="id" type="hidden" value="@item.SubtitleId" />
+                    <input type="submit" value="حذف" />
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

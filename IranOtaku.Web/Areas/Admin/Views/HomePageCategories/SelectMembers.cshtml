@@ -1,0 +1,19 @@
+﻿@inject ICategoryRepository _categoryManager;
+@model IEnumerable<Category>
+
+@{
+    ViewData["Title"] = "ویرایش اعضا";
+}
+
+<h2>ویرایش اعضا</h2>
+
+<form method="post" asp-action="SelectMembers">
+    @foreach (var item in Model)
+    {
+        <input type="checkbox" name="categories" value="@item.Id"
+               @( ( await _categoryManager.IsCategoryInHomePageAsync(item.Id) )? "checked" : "" ) 
+               /> <label> @item.Name </label>   
+    }
+
+    <input type="submit" value="ثبت" class="btn btn-success" />
+</form>

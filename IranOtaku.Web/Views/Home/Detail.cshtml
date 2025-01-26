@@ -1,0 +1,403 @@
+﻿@model Book
+@inject UserManager<User> _userManager;
+@inject SignInManager<User> _signInManager;
+@using IranOtaku.Core.Utilities
+@{
+    ViewData["Title"] = "کتاب " + Model.Name;
+    bool isSignedIn = _signInManager.IsSignedIn(User);
+    var user = (isSignedIn) ? await _userManager.Users.Include(u => u.Chapters).SingleOrDefaultAsync(u => u.UserName 
+    == User.Identity.Name)
+        : null;
+}
+
+
+
+<header class="aHeader">
+    <div class="aHeadertop">
+        <div class="leftTopHeader">
+            <div class="imgBox">
+                <img src="https://dl.aosasori.com/BookImages/@(Model.Image)" alt="@Model.Name" />
+            </div>
+        </div>
+        <div class="rightTopHeader">
+            <div class="rightTopHeaderContainer">
+                <div class="topTitleHeader">
+                    <span class="iconTitle"><img src="~/img/link.png" alt="" /></span>
+                    <h1>@Model.Name</h1>
+                </div>
+                <div class="topOurHeader">
+                    <div class="oneConContant">
+                        <div class="occLeft">
+                            <ul class="ulCon">
+                                <li class="licontainer">
+                                    <div class="icon">
+                                        <img src="~/img/video.png" alt="" />
+                                    </div>
+                                    <div class="titleName">
+                                        <h5>نام های دیگر : </h5>
+                                    </div>
+                                    <div class="contantName">
+                                        <ul>
+                                            <li>@Model.OtherNames</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="licontainer">
+                                    <div class="icon">
+                                        <img src="~/img/chat.png" alt="" />
+                                    </div>
+                                    <div class="titleName">
+                                        <h5>نوع : </h5>
+                                    </div>
+                                    <div class="contantName">
+                                        <ul>
+                                            <li>@Model.Type.TypeName</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="licontainer">
+                                    <div class="icon">
+                                        <img src="~/img/masks.png" alt="" />
+                                    </div>
+                                    <div class="titleName">
+                                        <h5>موضوع :</h5>
+                                    </div>
+                                    <div class="contantName">
+                                        <ul>
+                                            @foreach (var category in Model.Categories)
+                                            {
+                                                <li class="janrea"> <a asp-route-pageId="1" asp-action="Category" asp-route-id="@category.Id">@category.Name</a> </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="licontainer">
+                                    <div class="icon">
+                                        <img src="~/img/black-hole.png" alt="" />
+                                    </div>
+                                    <div class="titleName">
+                                        <h5>وضعیت : </h5>
+                                    </div>
+                                    <div class="contantName">
+                                        <ul>
+                                            <li>@Model.Status</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="licontainer">
+                                    <div class="icon">
+                                        <img src="~/img/18.png" alt="" />
+                                    </div>
+                                    <div class="titleName">
+                                        <h5>رده بندی سنی :</h5>
+                                    </div>
+                                    <div class="contantName">
+                                        <ul>
+                                            <li class="red">به افراد زیر @Model.Age سال توصیه نمی شود !</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="licontainer">
+                                    <div class="icon">
+                                        <img src="~/img/calendar.png" alt="" />
+                                    </div>
+                                    <div class="titleName">
+                                        <h5>زمان انتشار :</h5>
+                                    </div>
+                                    <div class="contantName">
+                                        <ul>
+                                            <li>@Model.RealeseDate</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="licontainer">
+                                    <div class="icon">
+                                        <img src="~/img/internet.png" alt="" />
+                                    </div>
+                                    <div class="titleName">
+                                        <h5>محصول کشور :</h5>
+                                    </div>
+                                    <div class="contantName">
+                                        <ul>
+                                            <li>@Model.Country</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="licontainer">
+                                    <div class="icon">
+                                        <img src="~/img/businessman.png" alt="" />
+                                    </div>
+                                    <div class="titleName">
+                                        <h5>تیم ترجمه : </h5>
+                                    </div>
+                                    <div class="contantName">
+                                        <ul>
+                                            <li>@Model.TranslatorTeam</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="licontainer">
+                                    <div class="icon">
+                                        <img src="~/img/discount.png" alt="" />
+                                    </div>
+                                    <div class="titleName">
+                                        <h5>قیمت : </h5>
+
+                                    </div>
+                                    <div class="contantName">
+                                        <ul>
+                                            <li class="green">@Model.Price</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="occRight">
+                            <div class="topEPContainer">
+                                <h5>
+                                    چپتر :
+                                    @Model.Seasons.Last().Chapters.Last().ChapterNumber
+                                </h5>
+                                <h5>جلد : @Model.Seasons.Last().SeasonNumber</h5>
+                            </div>
+                            @*<div class="amryazBox">
+                                    <div class="con">
+                                        <div class="amryazBoxImg">
+                                            <img src="/img/imdb.png" alt="" />
+                                        </div>
+                                        <div class="amryazBoxContent">7.5</div>
+                                    </div>
+                                    <div class="con">
+                                        <div class="amryazBoxImg">
+                                            <img src="./img/mal.png" alt="" />
+                                        </div>
+                                        <div class="amryazBoxContent">7.5</div>
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dateAndL">
+
+            <div class="likeBox">
+                <button>
+                    <img src="~/img/heart.png" alt="" />
+                </button>
+                <span>
+                    
+                </span>
+            </div>
+            <div class="adteTimeBox">
+                <span>@Model.UpdateDate.ToShamsi()</span>
+                <img src="~/img/calendar.png" alt="تاریخ آپدیت" />
+            </div>
+            <div class="bazdid">
+                <span>@Model.Views</span>
+                <img src="~/img/show.png" alt="بازدید" />
+            </div>
+        </div>
+    <div class="aHeaderbotton">
+        <div class="titlep">
+            <img src="~/img/pencil.png" alt="" />
+            <span>خلاصه داستان</span>
+        </div>
+        <div class="pContainer">
+            <p>
+                @Model.ShortStory
+            </p>
+        </div>
+    </div>
+</header>
+
+
+@if (isSignedIn)
+{
+
+<main class="naMain">
+    @foreach (var season in Model.Seasons)
+    {
+        <div class="accordio">
+            <div class="title">
+                <div>
+                    <h6>جلد @season.SeasonNumber</h6>
+                    <h6>چپتر @season.Chapters.First().ChapterNumber تا @season.Chapters.Last().ChapterNumber </h6>
+                </div>
+                <div class="svgt cclick">
+                    <?xml version="1.0" encoding="iso-8859-1" ?>
+                    <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 511.999 511.999"
+                         style="enable-background:new 0 0 511.999 511.999;" xml:space="preserve">
+                    <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="35.0291" y1="257.3129"
+                                    x2="478.0292" y2="257.3129" gradientTransform="matrix(0.9983 0 0 -0.9983 -0.0849 512.8665)">
+                    <stop offset="0" style="stop-color:#00F2FE" />
+                    <stop offset="0.021" style="stop-color:#03EFFE" />
+                    <stop offset="0.293" style="stop-color:#24D2FE" />
+                    <stop offset="0.554" style="stop-color:#3CBDFE" />
+                    <stop offset="0.796" style="stop-color:#4AB0FE" />
+                    <stop offset="1" style="stop-color:#4FACFE" />
+						</linearGradient>
+                    <path style="fill:url(#SVGID_1_);" d="M104.967,511.999c-0.104,0-0.209-0.001-0.313-0.001c-38.47-0.21-69.77-31.983-69.77-70.829
+	V70.058c0-25.691,13.39-48.512,35.819-61.041c22.429-12.531,48.88-11.971,70.758,1.497l302.4,186.405
+	c20.869,12.848,33.305,35.16,33.255,59.678c-0.05,24.52-12.576,46.781-33.507,59.55L224.997,449.999
+	c-9.405,5.758-21.695,2.802-27.452-6.602c-5.758-9.404-2.802-21.694,6.602-27.452l218.639-133.869
+	c9.139-5.576,14.378-14.886,14.4-25.56c0.022-10.673-5.179-20.004-14.268-25.601L120.517,44.511
+	c-9.374-5.771-20.718-6.011-30.339-0.636c-9.62,5.375-15.364,15.162-15.364,26.183v371.112c0,18.385,15.541,30.819,30.056,30.898
+	c4.735,0.001,10.08-1.726,15.553-5.064c9.411-5.743,21.698-2.768,27.441,6.645c5.743,9.413,2.767,21.698-6.645,27.441
+	C129.517,508.23,116.989,511.998,104.967,511.999z" />
+                    <g>
+						</g>
+                    <g>
+						</g>
+                    <g>
+						</g>
+                    <g>
+						</g>
+                    <g>
+						</g>
+                    <g>
+						</g>
+                    <g>
+						</g>
+                    <g>
+						</g>
+                    <g>
+						</g>
+                    <g>
+						</g>
+                    <g>
+						</g>
+                    <g>
+						</g>
+                    <g>
+						</g>
+                    <g>
+						</g>
+                    <g>
+						</g>
+					</svg>
+
+                </div>
+            </div>
+            <div class="content">
+
+                @foreach (var chapter in season.Chapters)
+                {
+                    <div class="itameManga">
+                        @if (chapter.Price != 0 && !user.Chapters.Any(c => c.Id == chapter.Id)
+                        && await _userManager.IsInRoleAsync(user, "User"))
+                        {
+                        <div class="limg">
+                            <img src="~/img/speech-bubble.png" alt="" />
+                        </div>
+                        <h6>چپتر : @chapter.ChapterNumber </h6>
+                        <h6><a href="#">@chapter.Price تومن</a></h6>
+                        <h6><a asp-action="Pay" asp-controller="UserPanel" asp-route-id="@chapter.Id">خرید</a></h6>
+                        }
+                        else
+                        {
+                        <div class="limg">
+                            <img src="~/img/speech-bubble.png" alt="" />
+                        </div>
+                        <h6>چپتر : @chapter.ChapterNumber </h6>
+                        <h6><a href="#"> @( (chapter.Price == 0)? "رایگان" : "خریداری شده" ) </a></h6>
+                        <h6><a asp-action="Read" asp-controller="Home" asp-route-id="@chapter.Id">خواندن</a></h6>
+                        }
+                    </div>
+
+                }
+            </div>
+        </div>
+    }
+</main>
+}
+else
+{
+    <br />
+    <br />
+    <br />
+    <main class="NAmain">
+        <h3>برای خواندن این کتاب، لطفا اول وارد سایت شوید</h3>
+        <br />
+        <a asp-action="RegisterAndLogin" asp-controller="Account">ورود</a>
+    </main>
+}
+
+
+<section class="comment" style="align-items: flex-start;">
+
+
+    @if (isSignedIn)
+    {
+        <div class="commentForm">
+            <span>نوشتن دیدگاه</span>
+            <textarea rows="15" cols="10" name="commentText" form="usrform"></textarea>
+            <form asp-action="AddComment" asp-controller="Home" method="post" id="usrform">
+                <input type="hidden" placeholder="نام" name="name" value="@(user.Name + " " + user.Family) " />
+                <input type="hidden" placeholder="ایمیل" name="email" value="@(user.Email)" />
+                <input type="hidden" value="@Model.Id" name="id" />
+                <input type="submit" value="فرستادن" class="submitAFB" />
+            </form>
+        </div>
+    }
+    else
+    {
+        <div class="commentForm">
+            <span>نوشتن دیدگاه</span>
+            <textarea rows="15" cols="10" name="commentText" form="usrform"></textarea>
+            <form asp-action="AddComment" asp-controller="Home" method="post" id="usrform">
+                <input type="text" placeholder="نام" name="name" />
+                <input type="text" placeholder="ایمیل" name="email" />
+                <input type="hidden" value="@Model.Id" name="id" />
+                <input type="submit" value="فرستادن" class="submitAFB" />
+            </form>
+        </div>
+    }
+
+
+
+    @foreach (var comment in Model.Comments)
+    {
+        <div class="commentBox">
+            <div class="usertitle">
+                <div class="userimg">
+                    @{
+                        var commentUser = await _userManager.FindByEmailAsync(comment.Email);
+                    }
+                    @if (commentUser == null || string.IsNullOrEmpty(commentUser.Image))
+                    {
+                        <img src="~/DefaultImages/profile.png" alt="@comment.Name" />
+                    }
+                    else
+                    {
+                        <img src="https://dl.aosasori.com/UserImages/@(commentUser.Image)" alt="@comment.Name" />
+                    }
+                </div>
+                <div class="title1">
+                    <h6>@comment.Name</h6>
+                    <h6>@comment.SendDate.ToShamsi()</h6>
+                </div>
+            </div>
+            <div class="usercomment">
+                <div class="comment">
+                    <p>
+                        @comment.Text
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+
+</section>
+
+
+
+
+
+@section Style
+{
+    <link rel="stylesheet" type="text/css" href="~/css/newarticle.css" />
+}

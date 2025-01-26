@@ -1,0 +1,28 @@
+﻿
+
+@{
+    ViewData["Title"] = "آپلود با فایل زیپ";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddImagesByZip" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">فایل:</label>
+                <input class="form-control" type="file" name="imageFile" />
+            </div>
+            <div class="form-group">
+                <input value="@ViewBag.ChapterId" type="hidden" name="chapterId"  />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="اضافه کردن" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ChapterImages" asp-route-id="@ViewBag.ChapterId">بازگشت</a>
+</div>
+

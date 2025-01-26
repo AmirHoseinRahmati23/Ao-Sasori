@@ -1,0 +1,41 @@
+﻿@model AnimeSeason
+
+@{
+    ViewData["Title"] = "قسمت های انیمه";
+}
+
+<p>
+    <a asp-action="AddHardsub" asp-route-id="@Model.Id">افزودن</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                شماره قسمت
+            </th>
+            <th>
+                قیمت(به تومان)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Epsodes)
+{
+        <tr>
+            <td>
+                @item.EpsodeNumber
+            </td>
+            <td>
+                @item.Price
+            </td>
+            <td>
+                <form method="post" asp-action="DeleteSubtitle">
+                    <input name="id" type="hidden" value="@item.EpsodeId" />
+                    <input type="submit" value="حذف" />
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

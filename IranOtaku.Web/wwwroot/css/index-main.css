@@ -1,0 +1,349 @@
+.Imain {
+  width: 1300px;
+  border-radius: 10px;
+  margin-top: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cardSliderContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+.cardSliderTitle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+.cardSliderTitle span {
+  font-size: 20px;
+  color:rgb(226, 226, 226);
+  font-family: Yekan;
+}
+.cardSliderTitle a {
+  font-size: 20px;
+  color: rgb(226, 226, 226);
+  font-family: Yekan;
+}
+.cardSliderTitle a:hover {
+  color: #fff
+}
+.Iarticle {
+  width: 230px;
+  height: 550px;
+  max-height: 450px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.Iarticle .img {
+  width: 228px;
+  height: 330px;
+  border-radius: 10px;
+  background: linear-gradient(to bottom,rgba(0, 238, 255,0.7),rgba(0,0,0,0),rgba(0,0,0, 0.1));
+}
+.Iarticle:hover img{
+  opacity: 40%;
+  transition: all .3s;
+}
+
+.Iarticle .img img {
+  width: 100%;
+  height: 330px;
+  border-radius: 10px;
+  transition: all .3s;
+}
+.Iarticle .contant{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-overflow: ellipsis !important;
+}
+.Iarticle .contant h2 {
+  width: 220px;
+  height: 40px;
+  margin-top: 10px;
+  font-size: 12px;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis !important;
+  font-family: IRANSans ,sans-serif;
+}
+.Iarticle .contant ul {
+  margin-top: 5px;
+  font-family: IRANSans ,sans-serif;
+  font-size: 10px;
+}
+.Iarticle .contant ul li {
+  font-family: IRANSans ,sans-serif;
+}
+.Iarticle .contant .genre {
+  margin-top: 10px;
+}
+.genre li {
+  border: 1px solid #80ffdb;
+  padding: 0 5px;
+  margin: 0 3px;
+  border-radius: 5px;
+}
+.Iarticle .Iarticlecontant{
+  position: absolute;
+  width: 100%;
+  height: 0px;
+  bottom: 0;
+  background-color: #002424;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: all .1s;
+  border-radius: 15px 15px 7px 7px ;
+}
+.Iarticle:hover .Iarticlecontant{
+  height: 220px;
+  transition: all .3s;
+}
+.Iarticle:hover .Iarticlecontant p{
+  width: 100%;
+  font-size: 11px;
+  max-height: 100px !important;
+  padding: 5px 15px;
+  text-align: justify;
+  line-height: 20px;
+  color: rgb(240, 240, 240);
+  font-family: IRANSans;
+}
+.Iarticle:hover{
+  border: 1px solid #80ffdb;
+	box-shadow: 0 0 10px 2px #80ffdb;
+  transition: all .3s;
+}
+.Iarticle:hover .Iarticlecontant a{
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 50% 50% 5px 5px;
+  border-top: 2px solid rgb(0, 155, 142);
+  background: #001310;
+  text-align: center;
+  font-family: Yekan;
+  transition: all .1s;
+}
+.Iarticle:hover .Iarticlecontant a:hover {
+  border-top: 2px solid rgb(0, 255, 242);
+  height: 35px;
+  transition: all .1s;
+
+}
+.carousel-cell:before {
+  display: block;
+  content: counter(carousel-cell);
+}
+.swiper-container {
+  width: 1300px;
+  height: 100%;
+}
+.swiper-slide {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+
+
+
+.specialCon {
+  width: 100%;
+  height: 470px;
+  margin-top: 30px;
+  display: flex;
+  margin: 40px 0;
+  border-radius: 10px;
+  background: #002020;
+  border: 1px solid #00e1ff1e;
+  box-shadow: 0 0 40px 2px #002e2a;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 10px;
+}
+.specialCon .specialCard {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.specialCon .specialCard .specialImgBox {
+  width: auto;
+  height: 100%;
+}
+.specialCon .specialCard .specialImgBox img {
+  width: 300px;
+  height: 100%;
+  box-shadow: 0 0 20px 0px #000000;
+  border-radius: 10px;
+}
+
+.specialContent {
+  width: 70%;
+  height: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 20px;
+}
+.specialContent h1 {
+  font-size: 40px;
+  font-family: Aviny;
+  word-spacing: 3px;
+  line-height: 56px;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+}
+.specialContent p {
+  font-size: 16px;
+  font-family: IRANSans;
+  word-spacing: normal;
+  line-height: 36px;
+  color: #cecece;
+  text-align: justify;
+}
+.specialContent .specialDl {
+  width: 150px;
+  font-size: 20px;
+  font-family: Yekan;
+  text-align: center;
+  padding: 3px 0;
+  border: 1px solid #fff;
+}
+.specialContent .specialDl:hover {
+  border: 1px solid #00ffb39a;
+  box-shadow: 0 0 10px 0 #007965;
+}
+
+
+
+
+@media screen and (max-width: 1300px){
+	.Imain{
+		width: 1200px;
+  }
+  .swiper-container  {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1200px){
+	.Imain{
+		width: 1100px;
+	}
+}
+@media screen and (max-width: 1100px){
+	.Imain{
+    width: 1000px;
+	}
+}
+@media screen and (max-width: 1024px){
+	.Imain{
+		margin-top: 1500px;
+	}
+}
+@media screen and (max-width: 1024px){
+	.Imain{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1023.5px){
+  .cardSliderTitle {
+    width: 92%;
+  }
+}
+@media screen and (max-width: 985px){
+  .cardSliderTitle {
+    width: 95%;
+  }
+
+}
+@media screen and (max-width: 870px){
+  .cardSliderTitle {
+    width: 98%;
+  }
+
+}
+@media screen and (max-width: 768px){
+	.Imain{
+    width: 100%;
+  }
+  .cardSliderTitle {
+    width: 90%;
+  }
+
+  .specialCon  {
+    height: auto;
+  }
+  .specialContent h1 {
+    font-size: 30px;
+  }
+  .specialContent p {
+    font-size: 12px;
+    line-height: 30px;
+  }
+  .specialContent .specialDl {
+    width: 100px;
+    font-size: 18px;
+  }
+  @media screen and (max-width: 568px){
+    .specialCon .specialCard {
+      flex-direction: column;
+    }
+    .specialContent {
+      width: 100%;
+    }
+    .specialCon  {
+      padding: 20px 5px;
+    }
+  }
+
+
+}
+@media screen and (max-width: 650px){
+
+  .cardSliderTitle {
+    width: 90%;
+  }
+  .cardSliderTitle span {
+    font-size: 14px;
+  }
+  .cardSliderTitle a {
+    font-size: 14px;
+  }
+}

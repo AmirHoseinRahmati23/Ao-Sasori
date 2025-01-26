@@ -1,0 +1,103 @@
+﻿@model IranOtaku.Data.Entities.Book
+
+@{
+    ViewData["Title"] = "جزئیات کتاب";
+}
+
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt></dt>
+        <dd>
+            @if (Model.ImageIsUploaded)
+            {
+                <img class="mw-100" src="https://dl.aosasori.com/BookImages/@(Model.Image)" alt=" کتاب @Model.Name" />
+            }
+            else
+            {
+                <img class="mw-100" src="~/DefaultImages/Default.png" alt=" کتاب @Model.Name" />
+            }
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OtherNames) :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OtherNames)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortStory) :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ShortStory)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RealeseDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RealeseDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TranslatorTeam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TranslatorTeam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Translator)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Translator)
+        </dd>
+    </dl>
+</div>
+
+<br />
+<hr />
+<div>
+    <h4>
+        فصل ها
+    </h4>
+    <a asp-action="AddSeason" asp-controller="Books" asp-route-id="@Model.Id">افزودن فصل به کتاب</a>
+    <table>
+        <thead>
+            <tr>
+                <th>نام فصل(نمایش)</th>
+                <th>شماره فصل برای ترتیب بندی</th>
+                <th>دستورات</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var season in Model.Seasons)
+            {
+                <tr>
+                    <td>@season.SeasonName</td>
+                    <td>@season.SeasonNumber</td>
+                    <td>
+                        <a asp-action="Chapters" asp-route-id="@season.Id">مدیریت چپتر ها</a> |
+                        <form method="post" asp-action="DeleteSeason">
+                            <input type="hidden" value="@season.Id" name="id" />
+                            <input type="submit" value="حذف" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+<br />
+<br />
+<div>
+    <a asp-controller="Books" asp-action="Edit" asp-route-id="@Model.Id">ویرایش کتاب</a> |
+    <a asp-controller="Books" asp-action="Index">بازگشت</a>
+</div>

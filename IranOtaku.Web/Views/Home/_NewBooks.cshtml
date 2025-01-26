@@ -1,0 +1,85 @@
+﻿@inject IBookManagement _bookManager
+@inject IAnimeManagement _animeManager
+@{
+    var groups = await _bookManager.GetNewBooksAsync();
+    var animes = await _animeManager.GetNewAnimesAsync();
+}
+
+@foreach (var group in groups)
+{
+    <section class="broadcastCon">
+        <div class="broadcastTitle">
+            <span>آخرین @group.GroupName ها</span>
+        </div>
+        <div class="wapper">
+            @foreach (var book in group.Books)
+            {
+                <article class="broadcastArticle">
+                    <div class="broadcastArticleImg">
+                        <a asp-action="Detail" asp-controller="Home" asp-route-id="@book.Id">
+                            <img src="https://dl.aosasori.com/BookImages/@(book.Image)" alt="عکس @book.Name">
+                        </a>
+                    </div>
+                    <div class="broadcastArticleContant">
+                        <div class="broadcastArticleName">
+                            <a asp-action="Detail" asp-controller="Home" asp-route-id="@book.Id">@book.Name</a>
+                        </div>
+                        <div class="bACCon">
+                            <ul class="ulEpCon">
+                                <li class="Condition">@book.Age</li>
+                                <li class="Season">@book.Translator</li>
+                                <li class="Episodes">@book.TranslatorTeam</li>
+                            </ul>
+                            <ul class="ulBBiuCon">
+                                @foreach (var category in book.Categories.Take(3))
+                                {
+                                    <li>@category.Name</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            }
+
+        </div>
+    </section>
+}
+
+
+
+<section class="broadcastCon">
+    <div class="broadcastTitle">
+        <span>آخرین انیمه ها</span>
+    </div>
+    <div class="wapper">
+        @foreach (var anime in animes)
+        {
+            <article class="broadcastArticle">
+                <div class="broadcastArticleImg">
+                    <a asp-action="AnimeDetail" asp-controller="Home" asp-route-id="@anime.Id">
+                        <img src="https://dl.aosasori.com/BookImages/@(anime.Image)" alt="عکس @anime.Name">
+                    </a>
+                </div>
+                <div class="broadcastArticleContant">
+                    <div class="broadcastArticleName">
+                        <a asp-action="AnimeDetail" asp-controller="Home" asp-route-id="@anime.Id">@anime.Name</a>
+                    </div>
+                    <div class="bACCon">
+                        <ul class="ulEpCon">
+                            <li class="Condition">@anime.Age</li>
+                            <li class="Season">@anime.Translator</li>
+                            <li class="Episodes">@anime.TranslatorTeam</li>
+                        </ul>
+                        <ul class="ulBBiuCon">
+                            @foreach (var category in anime.Categories.Take(3))
+                            {
+                                <li>@category.Name</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        }
+
+    </div>
+</section>

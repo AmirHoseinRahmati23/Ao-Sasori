@@ -1,0 +1,400 @@
+@import url("react.css");
+@import url("nav.css");
+@import url("footer.css");
+
+body {
+    width: 100%;
+    background: linear-gradient(
+            rgba(16, 14, 23, 0.5),
+            rgba(16, 14, 23, 0.6),
+            rgba(16, 14, 23, 0.7),
+            rgba(16, 14, 23, 0.8),
+            rgba(16, 14, 23, 0.9),
+            rgba(16, 14, 23, 1)
+        ),
+        url("http://s11.picofile.com/file/8407133900/1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.pHeader {
+    width: 1000px;
+    height: 400px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pHeader .profile {
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pHeader .profile .con {
+    width: 300px;
+    height: 100%;
+    background: rgba(0, 53, 53, 0.24);
+    border: 3px solid rgb(0, 102, 102);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 10px 0 rgba(1, 109, 109, 0.719);
+}
+.pHeader .profile .con .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 20px;
+}
+.pHeader .profile .con .content h1 {
+    margin-top: 10px;
+    font-family: Yekan, sans-serif;
+    font-size: 20px;
+    line-height: 25px;
+}
+.pHeader .profile .con .content .mojode {
+    position: relative;
+    width: 250px;
+    height: 60px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 20px;
+    border: 3px solid rgb(0, 134, 134);
+}
+.pHeader .profile .con .content .mojode h2 {
+    margin-top: 10px;
+    color: rgb(48, 192, 48);
+    font-size: 16px;
+}
+.pHeader .profile .con .content .mojode span {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 2px 30px;
+    background-color: rgb(0, 48, 24);
+    border: 3px solid rgb(0, 134, 134);
+    border-radius: 10px;
+    font-size: 12px;
+    color: rgb(241, 186, 34);
+    font-family: Yekan;
+}
+.pHeader .profile .con .content button {
+    margin-top: 17px;
+    padding: 7px 40px;
+    font-family: Yekan;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ff00003d;
+    border: 2px solid rgb(255, 0, 0);
+    color: #fff;
+    cursor: pointer;
+}
+.pHeader .profile .con .content button:hover {
+    box-shadow: 0 0 10px 1px rgb(173, 0, 0);
+}
+
+.pHeader .profile .con .profile-image {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 0 rgb(0, 52, 68);
+    border: 3px solid rgb(0, 165, 190);
+}
+.pHeader .profile .con .profile-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+.pHeader .profile .con .profile-image .contl {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    background-color: rgb(255, 0, 51);
+    font-size: 25px;
+    overflow: hidden;
+}
+.pHeader .profile .con .profile-image .contl label {
+    cursor: pointer;
+}
+.pHeader .profile .con .profile-image .contl input {
+    display: none;
+    visibility: hidden;
+}
+
+.pHeader .profile-content {
+    width: 680px;
+    height: 400px;
+    background: rgba(0, 53, 53, 0.24);
+    border: 3px solid rgba(0, 53, 53, 0.678);
+    border-radius: 20px;
+    box-shadow: 0 0 10px 0 rgba(0, 53, 53, 0.719);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.pHeader .profile-content .cph-box {
+    margin-top: 10px;
+}
+
+.pHeader .profile-content h6 {
+    font-size: 22px;
+    font-family: Yekan;
+}
+
+.pHeader .profile-content form {
+    margin-top: 10px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pHeader .profile-content form input[type="text"] {
+    background-color: rgba(16, 14, 23, 1);
+    border: none;
+    outline: none;
+    color: #fff;
+    margin: 5px 0;
+    padding: 5px 10px;
+    width: 250px;
+    height: 40px;
+    font-size: 16px;
+    font-family: Yekan;
+    border-radius: 5px;
+    border: 2px solid rgb(0, 124, 124);
+}
+.pHeader .profile-content form input[type="text"]::placeholder {
+    color: rgb(226, 226, 226);
+}
+.pHeader .profile-content form ::placeholder {
+    color: #000;
+}
+.pHeader .profile-content form input[type="text"]:focus {
+    border: 2px solid rgb(0, 163, 163);
+}
+.pHeader .profile-content form input[type="text"]:focus::placeholder {
+    color: #fff;
+}
+.pHeader .profile-content form input[type="submit"] {
+    background: none;
+    border: none;
+    outline: none;
+    background: rgb(0, 36, 39);
+    border: 2px solid rgb(0, 89, 97);
+    width: 120px;
+    padding: 5px 20px;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: Yekan;
+    border-radius: 10px;
+    color: #fff;
+}
+.pHeader .profile-content form input[type="submit"]:hover {
+    border: 2px solid rgb(0, 131, 143);
+}
+.PMain {
+    width: 1000px;
+    margin-top: 20px;
+    background: rgba(0, 53, 53, 0.24);
+    border: 3px solid rgba(0, 53, 53, 0.678);
+    border-radius: 20px;
+    box-shadow: 0 0 10px 0 rgba(0, 53, 53, 0.719);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.PMain .title {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.PMain .title h3 {
+    width: auto;
+    font-size: 25px;
+    margin: 0 10px;
+}
+.PMain .title span {
+    width: 40%;
+    height: 2px;
+    background-color: rgb(0, 204, 160);
+    font-family: Yekan;
+}
+.PMain .all {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.PMain .all .itame {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    border: 3px solid rgb(0, 124, 124);
+    padding: 5px;
+    margin: 10px;
+    background-color: rgba(16, 14, 23, 1);
+}
+.PMain .all .itame .imgBox {
+    width: 90px;
+    height: 130px;
+}
+.PMain .all .itame .imgBox img {
+    border-radius: 10px;
+}
+.PMain .all .itame .content {
+    width: 190px;
+    height: 130px;
+    border-radius: 10px;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.PMain .all .itame .content h4 {
+    width: 100%;
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+.PMain .all .itame .content a {
+    width: 110px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff00003d;
+    border: 2px solid rgb(255, 0, 0);
+    font-size: 12px;
+    border-radius: 10px;
+    font-family: Yekan;
+}
+.PMain .all .itame .content a:hover {
+    box-shadow: 0 0 10px 1px rgb(173, 0, 0);
+}
+.PMain .buttomCant {
+    width: 95%;
+    height: 70px;
+    background-color: rgba(16, 14, 23, 1);
+    border: 3px solid rgb(1, 126, 105);
+    margin: 20px 0 10px 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.PMain .buttomCant button {
+    padding: 10px 20px;
+    font-family: Yekan;
+    font-size: 14px;
+    background-color: rgba(16, 14, 23, 1);
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    border: 3px solid rgb(1, 126, 105);
+    cursor: pointer;
+    color: #eee;
+}
+.PMain .buttomCant button:hover {
+    color: rgb(255, 255, 255);
+    border: 3px solid rgb(0, 179, 149);
+}
+.PMain .buttomCant .nambers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.PMain .buttomCant .nambers a {
+    font-size: 20px;
+    color: rgb(199, 199, 199);
+    padding: 5px 20px;
+}
+.PMain .buttomCant .nambers a:hover {
+    color: #fff;
+}
+
+@media screen and (max-width: 1024px) {
+    .pHeader {
+        width: 100%;
+        justify-content: space-evenly;
+    }
+    .pHeader .profile {
+        width: 320px;
+    }
+    .pHeader .profile-content {
+        width: 60%;
+    }
+    .PMain {
+        width: 90%;
+    }
+}
+@media screen and (max-width: 700px) {
+    .pHeader {
+        height: auto;
+        flex-direction: column;
+    }
+    .pHeader .profile-content {
+        margin-top: 20px;
+    }
+    .PMain .buttomCant .nambers a {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+    .PMain .title h3 {
+        font-size: 18px;
+    }
+    .pHeader .profile {
+        width: 90%;
+    }
+    .pHeader .profile .con {
+        width: 100%;
+    }
+    .pHeader .profile-content {
+        width: 90%;
+        height: auto;
+    }
+}
+@media screen and (max-width: 440px) {
+    .PMain .buttomCant .nambers a {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+    .PMain .buttomCant button {
+        padding: 10px 5px;
+        font-size: 10px;
+    }
+    .PMain .buttomCant {
+        padding: 0 5px;
+    }
+    .PMain .title span {
+        width: 30%;
+    }
+}
